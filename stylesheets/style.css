@@ -69,6 +69,7 @@ img, picture, video, canvas, svg {
     margin-top: 2rem;
     font-weight: 300;
     margin-bottom: 1rem;
+    letter-spacing: -1.5px;
 }
 #search-bar {
     background-color: white;
@@ -143,6 +144,9 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
+    body {
+        flex-wrap: wrap;
+    }
 }
 
 /* md = (medium) */
@@ -153,15 +157,18 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
-    .navbar {
-        display: block;
-    }
 }
 
 /* lg = (large) */
 @media (min-width: 1024px) {
     .container {
         max-width: 1024px;
+    }
+    body {
+        flex-wrap: nowrap;
+    }
+    .navbar {
+        display: block;
     }
 }
 
