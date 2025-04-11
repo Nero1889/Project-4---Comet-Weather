@@ -58,6 +58,12 @@ img, picture, video, canvas, svg {
     height: 99.9vh;
     width: 20rem;
 }
+#search-bar {
+    background-color: white;
+    border: 1px solid black;
+    width: 225px;
+    padding: .5em;
+}
 .main-weather-info {
     /* border: 5px solid #b71234; */
     display: flex;
