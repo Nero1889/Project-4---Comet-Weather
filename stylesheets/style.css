@@ -85,7 +85,6 @@ img, picture, video, canvas, svg {
     align-items: center;
     justify-content: space-around;
     width: auto;
-    flex-wrap: wrap;
 }
 #city-climate {
     width: 20rem;
@@ -124,6 +123,9 @@ img, picture, video, canvas, svg {
     .navbar {
         display: none;
     }
+    .main-weather-info {
+        flex-wrap: wrap;
+    }
 }
 
 /* xs = (extra small) */
@@ -144,8 +146,8 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
-    body {
-        flex-wrap: wrap;
+    .main-weather-info {
+        flex-wrap: nowrap
     }
 }
 
