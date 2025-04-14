@@ -61,7 +61,6 @@ img, picture, video, canvas, svg {
 }
 .navbar {
     height: 99.9vh;
-    width: 20rem;
 }
 #navbar-title, #display-time {
     font-size: var(--size-3xl);
@@ -191,9 +190,9 @@ img, picture, video, canvas, svg {
         width: 90rem;
     }
     #box-container {
-        gap: 2rem;
-        row-gap: 5rem;
-        width: 20rem;
+        gap: 1rem;
+        row-gap: 1rem;
+        width: 45rem;
     }
 }
 
@@ -205,10 +204,16 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
+    .navbar {
+        width: 17rem;
+    }
+    #city-climate {
+        margin-right: 4rem;
+    }
     #box-container {
-        gap: 3rem;
+        gap: 4rem;
         row-gap: 5rem;
-        width: 44rem;
+        width: 45rem;
     }
 }
 
@@ -220,7 +225,15 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
+    .navbar {
+        width: 20rem;
+    }
+    #city-climate {
+        margin-right: 3rem;
+    }
     #box-container {
+        gap: 5rem;
+        row-gap: 5rem;
         width: 50rem;
     }
 }
