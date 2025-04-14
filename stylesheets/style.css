@@ -56,15 +56,14 @@ img, picture, video, canvas, svg {
 .navbar, .weather-box {
     background-color: rgba(255, 255, 255, 0.329); 
     backdrop-filter: blur(2px);
-    border: 1px solid #9c9c9c;
+    border: 1px solid #c5c5c5;
     text-align: center;
 }
 .navbar {
     height: 99.9vh;
     width: 20rem;
-    border: 5px solid #b71234;
 }
-#navbar-title {
+#navbar-title, #display-time {
     font-size: var(--size-3xl);
     margin-top: 2rem;
     font-weight: 300;
@@ -77,7 +76,11 @@ img, picture, video, canvas, svg {
     border-radius: 25px;
     width: 225px;
     padding: .5em;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
+}
+#display-time {
+    font-weight: 400;
+    letter-spacing: normal;
 }
 .main-weather-info {
     border: 2px solid green;
@@ -96,7 +99,6 @@ img, picture, video, canvas, svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
     width: 60rem;
     flex-wrap: wrap;
 }
@@ -123,8 +125,14 @@ img, picture, video, canvas, svg {
     .navbar {
         display: none;
     }
+    
     .main-weather-info {
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    #box-container {
+        gap: 2rem;
     }
 }
 
@@ -159,6 +167,12 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
+    #box-container {
+        gap: 5rem;
+    }
+    .main-weather-info {
+        width: 100rem;
+    }
 }
 
 /* lg = (large) */
@@ -172,6 +186,15 @@ img, picture, video, canvas, svg {
     .navbar {
         display: block;
     }
+    .main-weather-info {
+        flex-wrap: wrap;
+        width: 90rem;
+    }
+    #box-container {
+        gap: 2rem;
+        row-gap: 5rem;
+        width: 20rem;
+    }
 }
 
 /* xl = (extra large) */
@@ -182,6 +205,11 @@ img, picture, video, canvas, svg {
     .section {
         margin-top: 5rem;
     }
+    #box-container {
+        gap: 3rem;
+        row-gap: 5rem;
+        width: 44rem;
+    }
 }
 
 /* 2xl = (two extra large) */
@@ -191,5 +219,8 @@ img, picture, video, canvas, svg {
     }
     .section {
         margin-top: 5rem;
+    }
+    #box-container {
+        width: 50rem;
     }
 }
