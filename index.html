@@ -11,14 +11,19 @@
     <header>
         <nav class="navbar">
             <h1 id="navbar-title">COMET WEATHER</h1>
-            <input id="search-bar" type="text" placeholder=" Search!">
+            <form id="weather-form">
+                <input id="search-bar" type="text" placeholder=" Search!">
+                <button>Find </button>
+            </form>
             <h2 id="display-time"></h2>
             <li>About</li>
         </nav>
     </header>
     <main class="main-weather-info container section">
-        <div class="weather-box" id="city-climate">
-            <h1>(City Name)</h1>
+        <div class="weather-box" id="city-climate" style="display: none;">
+            <h1 class="city-climate-title">Madison</h1>
+            <h1 class="display-temp"></h1>
+            <p id="display-desc">Clear skies</p>
         </div>
 
         <div id="box-container">
