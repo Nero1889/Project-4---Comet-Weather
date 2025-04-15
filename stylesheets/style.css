@@ -93,6 +93,21 @@ img, picture, video, canvas, svg {
     height: 35rem;
     margin-right: 2rem;
 }
+.city-climate-title {
+    font-size: var(--size-4xl);
+    margin-top: 3.4rem;
+    font-weight: 500;
+    text-align: center;
+}
+.display-temp {
+    font-size: var(--size-7xl);
+    margin-top: 1rem;
+    font-weight: 300;
+}
+#display-desc {
+    font-size: var(--size-2xl);
+    margin-top: 12rem;
+}
 #box-container {
     border: 2px solid purple;
     display: flex;
@@ -106,6 +121,9 @@ img, picture, video, canvas, svg {
     height: 15rem;
     width: 20rem;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
 }
 
 
@@ -177,22 +195,22 @@ img, picture, video, canvas, svg {
 /* lg = (large) */
 @media (min-width: 1024px) {
     .container {
-        max-width: 1024px;
+        max-width: 1280px;
     }
-    body {
-        flex-wrap: nowrap;
+    .section {
+        margin-top: 5rem;
     }
     .navbar {
         display: block;
+        width: 17rem;
     }
-    .main-weather-info {
-        flex-wrap: wrap;
-        width: 90rem;
+    #city-climate {
+        margin-right: 4rem;
     }
     #box-container {
-        gap: 1rem;
-        row-gap: 1rem;
-        width: 45rem;
+        gap: 3rem;
+        row-gap: 3rem;
+        width: 50rem;
     }
 }
 
@@ -208,12 +226,12 @@ img, picture, video, canvas, svg {
         width: 17rem;
     }
     #city-climate {
-        margin-right: 4rem;
+        margin-right: 2rem;
     }
     #box-container {
-        gap: 4rem;
+        gap: 5rem;
         row-gap: 5rem;
-        width: 45rem;
+        width: 50rem;
     }
 }
 
