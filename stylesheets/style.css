@@ -50,9 +50,6 @@ img, picture, video, canvas, svg {
 .section {
     margin-top: 5rem;
 }
-
-
-
 .navbar, .weather-box {
     background-color: rgba(255, 255, 255, 0.329); 
     backdrop-filter: blur(2px);
@@ -125,17 +122,6 @@ img, picture, video, canvas, svg {
     flex-direction: column; 
     align-items: center;    
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* xxs = (extra extra small)  */
 @media (min-width: 320px) {
