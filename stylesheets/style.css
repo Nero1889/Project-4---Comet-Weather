@@ -5,13 +5,7 @@
 }
 :root {
     /* Color Theme */
-    --main-theme: #b71234;
-    --dark-main-theme: #710033;
-    --primary-txt: white;
-    --secondary-txt: #475569;
-    --drk-bg-color: #070a13;
-    --slate1: #1e293b;
-    --slate2: #94a3b8;
+    --txt: #737373;
 
     /* Sizes */
     --size-xss: 0.5rem;
@@ -35,9 +29,10 @@ html {
 }
 body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    background-color: var(--drk-bg-color);
+    background-color: black;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    color: var(--primary-txt);
+    color: white;
+    
 }
 .container {
     width: 100%;
@@ -66,26 +61,52 @@ body {
 }
 #app-title {
     font-weight: 300;
-    margin-left: 10rem;
+    font-size: var(--size-lg);
+    margin-left: 1.5rem;
 }
-.search-bar {
-    font-size: var(--size-base);
-    border-radius: 25px;
-    border: none;
-    padding: 15px;
-    width: 25rem;
-    margin-left: -7rem;
+#mobile-btn-container {
+    margin-right: 1.5rem;
+}
+.search-bar, #current-location-btn {
+    display: none;
+}
+#search-icon {
+    background-color: #131214;
+    margin-right: .5rem;
+}
+#location-icon {
+    background-color: #b71234;
+}
+#search-icon, #location-icon {
+    padding: 10px;
+    border-radius: 50px;
+}
 
-}
-#current-location-btn {
-    border: none;
-    font-size: var(--size-base);
-    padding: 15px;
-    border-radius: 25px;
-    background-color: #1d1c1f;
-    color: rgb(173, 173, 173);
-    margin-right: 10rem;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
