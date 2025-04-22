@@ -6,6 +6,7 @@
 :root {
     /* Color Theme */
     --txt: #737373;
+    --box-bg: #1d1c1f;
 
     /* Sizes */
     --size-xss: 0.5rem;
@@ -31,8 +32,7 @@ body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: black;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    color: white;
-    
+    color: white;   
 }
 .container {
     width: 100%;
@@ -80,6 +80,36 @@ body {
 #search-icon, #location-icon {
     padding: 10px;
     border-radius: 50px;
+}
+.side-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+#current-weather {
+    background-color: var(--box-bg);
+    width: 70%;
+    color: var(--txt);
+    border-radius: 25px;
+    padding: 25px;
+}
+#weather-img {
+    position: absolute;
+    margin-top: -5rem;
+    margin-left: 11rem;
+}
+#now, #temperature, #desc {
+    color: white;
+}
+#desc {
+    margin-bottom: 1rem;
+}
+#temperature {
+    font-size: var(--size-5xl);
+}
+#date {
+    margin-bottom: .25rem;
 }
 
 
