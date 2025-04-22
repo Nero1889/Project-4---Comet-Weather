@@ -96,11 +96,12 @@ body {
 }
 #weather-img {
     position: absolute;
-    margin-top: -5rem;
-    margin-left: 11rem;
+    margin-top: -5.5rem;
+    margin-left: 40%;
 }
 #now, #temperature, #desc {
     color: white;
+    font-weight: normal;
 }
 #desc {
     margin-bottom: 1rem;
@@ -111,40 +112,6 @@ body {
 #date {
     margin-bottom: .25rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
