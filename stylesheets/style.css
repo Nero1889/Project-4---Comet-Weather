@@ -58,35 +58,36 @@ body {
 /* ======================================================================= */
 
 .upper-container {
-    /* border: 5px solid #b71234; */
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    
-
+    justify-content: space-between;
     gap: 2rem;
     margin-top: 2.5rem;
 }
 #app-title {
-    position: relative;
-    margin-left: 0;
-    font-weight: 10;
+    font-weight: 300;
+    margin-left: 10rem;
 }
 .search-bar {
     font-size: var(--size-base);
     border-radius: 25px;
     border: none;
-    padding: 10px;
-    width: 24rem;
+    padding: 15px;
+    width: 25rem;
+    margin-left: -7rem;
+
 }
 #current-location-btn {
     border: none;
     font-size: var(--size-base);
-    padding: 10px;
+    padding: 15px;
     border-radius: 25px;
     background-color: #1d1c1f;
-    color: white;
+    color: rgb(173, 173, 173);
+    margin-right: 10rem;
 }
+
+
 
 
 
