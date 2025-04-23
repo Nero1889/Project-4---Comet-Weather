@@ -147,20 +147,20 @@ body {
     background-color: var(--box-bg);
     color: var(--box-bg);
 }
-
 .search-bar.expanded {
     display: block;
     height: 5rem;
     width: 100vw;
     font-size: var(--size-lg);
     border: none;
-    /* border: 1px solid #b71234; */
     margin-left: 2rem;
+    color: var(--txt);
+    padding-left: 5rem; 
 }
 #back-btn {
     position: absolute;
     margin-top: -3.4rem;
-    margin-left: 2rem;
+    margin-left: 4.3rem;
 }
 
 
