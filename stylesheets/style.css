@@ -96,7 +96,7 @@ body {
 }
 #weather-img {
     position: absolute;
-    margin-top: -5.5rem;
+    margin-top:-7rem;
     margin-left: 40%;
 }
 #now, #temperature, #desc {
@@ -105,12 +105,18 @@ body {
 }
 #desc {
     margin-bottom: 1rem;
+    font-weight: 300;
 }
 #temperature {
     font-size: var(--size-5xl);
 }
 #date {
     margin-bottom: .25rem;
+}
+.vertical-bar {
+    background-color: rgb(62, 62, 62);
+    height: .01rem;
+    margin-bottom: .5rem;
 }
 
 
@@ -129,7 +135,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--box-bg);;
+    background-color: var(--box-bg);
     display: none; 
     justify-content: center;
     z-index: 99; 
@@ -137,21 +143,24 @@ body {
 .search-overlay.open {
     display: flex; 
 }
-.search-overlay-content input{
+.search-overlay-content input {
     background-color: var(--box-bg);
     color: var(--box-bg);
 }
 
 .search-bar.expanded {
     display: block;
-    height: 4.5rem;
+    height: 5rem;
     width: 100vw;
     font-size: var(--size-lg);
+    border: none;
+    /* border: 1px solid #b71234; */
+    margin-left: 2rem;
 }
 #back-btn {
     position: absolute;
-    margin-top: -3.3rem;
-    margin-left: 1rem;
+    margin-top: -3.4rem;
+    margin-left: 2rem;
 }
 
 
