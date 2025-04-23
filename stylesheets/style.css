@@ -154,13 +154,35 @@ body {
     font-size: var(--size-lg);
     border: none;
     margin-left: 2rem;
-    color: var(--txt);
+    color: white;
     padding-left: 5rem; 
 }
 #back-btn {
     position: absolute;
     margin-top: -3.4rem;
     margin-left: 4.3rem;
+}
+.icon {
+    float: left;
+    height: var(--size-2xl);
+}
+#icon-container {
+    display: flex;
+    flex-direction: column;
+}
+#icon-1 p, #icon-2 p {
+    margin-left: 2rem;
+}
+#icon-1 p {
+    position: absolute;
+    margin-top: 3px;
+}
+#icon-2 p {
+    margin-top: 2px;
+}
+#icon-1 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
 
