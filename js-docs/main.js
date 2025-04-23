@@ -2,66 +2,66 @@
 const BODY = document.body;
 const BG_IMAGES = [
     // North America
-    "images/sanFrancisco.png",
-    "images/vancouver.png",
-    "images/losAngeles.png",
-    "images/lasVegas.png",
-    "images/houston.png",
-    "images/chicago.png",
-    "images/newYork.png",
-    "images/miami.png",
-    "images/mexicoCity.png",
+    "/images/sanFrancisco.png",
+    "/images/vancouver.png",
+    "/images/losAngeles.png",
+    "/images/lasVegas.png",
+    "/images/houston.png",
+    "/images/chicago.png",
+    "/images/newYork.png",
+    "/images/miami.png",
+    "/images/mexicoCity.png",
 
     // South America
-    "images/bogota.png",
-    "images/rioDeJaneiro.png",
-    "images/buenosAires.jpg",
-    "images/santiago.png",
+    "/images/bogota.png",
+    "/images/rioDeJaneiro.png",
+    "/images/buenosAires.jpg",
+    "/images/santiago.png",
 
     // Europe
-    "images/madrid.jpg",
-    "images/london.jpg",
-    "images/stockholm.jpg",
-    "images/berlin.jpg",
-    "images/paris.jpeg",
-    "images/rome.png",
-    "images/moscow.jpg",
-    "images/istanbul.png",
+    "/images/madrid.jpg",
+    "/images/london.jpg",
+    "/images/stockholm.jpg",
+    "/images/berlin.jpg",
+    "/images/paris.jpeg",
+    "/images/rome.png",
+    "/images/moscow.jpg",
+    "/images/istanbul.png",
 
     // Africa
-    "images/cairo.jpg",
-    "images/lagos.jpg",
-    "images/kinshasa.jpg",
-    "images/johannesburg.jpg",
-    "images/darEsSalaam.jpg",
+    "/images/cairo.jpg",
+    "/images/lagos.jpg",
+    "/images/kinshasa.jpg",
+    "/images/johannesburg.jpg",
+    "/images/darEsSalaam.jpg",
 
     // Asia
-    "images/riyadh.jpg",
-    "images/dubai.jpg",
-    "images/tehran.jpg",
-    "images/newDelhi.jpg",
-    "images/thailand.jpg",
-    "images/beijing.jpg",
-    "images/seoul.jpg",
-    "images/tokyo.jpg",
-    "images/japan.jpg",
-    "images/hongKong.jpg",
-    "images/hoChiMinhCity.jpeg",
-    "images/manila.jpg",
+    "/images/riyadh.jpg",
+    "/images/dubai.jpg",
+    "/images/tehran.jpg",
+    "/images/newDelhi.jpg",
+    "/images/thailand.jpg",
+    "/images/beijing.jpg",
+    "/images/seoul.jpg",
+    "/images/tokyo.jpg",
+    "/images/japan.jpg",
+    "/images/hongKong.jpg",
+    "/images/hoChiMinhCity.jpeg",
+    "/images/manila.jpg",
     
     // Australia
-    "images/sydney.jpg",
+    "/images/sydney.jpg",
 
     // Antarctica
-    "images/antarctica.jpg",
+    "/images/antarctica.jpg",
 
     // Earth 
-    "images/milkyWay.jpg", 
-    "images/jungle.jpeg",
-    "images/waterfall.jpg",
-    "images/desert.jpg",
-    "images/coralReef.jpg",
-    "images/mountains.jpg",
+    "/images/milkyWay.jpg", 
+    "/images/jungle.jpeg",
+    "/images/waterfall.jpg",
+    "/images/desert.jpg",
+    "/images/coralReef.jpg",
+    "/images/mountains.jpg",
 ];
 
 const BG_CONTAINER = document.createElement("div");
@@ -95,5 +95,28 @@ function chooseRandomBgImg() {
 
 chooseRandomBgImg();
 
+/* Date and Time */
+const DATE = document.querySelector("#date");
+
+function displayDateTime() {
+    const NOW = new Date();
+    const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday"];
+    const MONTHS = ["January", "February", "March", "April", "May",
+    "June", "July", "August", "September", "October", "November",
+    "December"];
+
+    const DAY_OF_WEEK = DAYS_OF_WEEK[NOW.getDay()];
+    const DAY_OF_MONTH = NOW.getDate();
+    const MONTH = MONTHS[NOW.getMonth()];
+
+    const DATE_STRING = `${DAY_OF_WEEK} ${DAY_OF_MONTH} ${MONTH}`;
+    DATE.textContent = DATE_STRING;
+}
+
+displayDateTime();
+
 /* Weather */
 const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
+
+
