@@ -159,22 +159,25 @@ async function displayWeatherInfo(data) {
     console.log(data); // City data for debugging and troubleshooting
 
     const {name: city, main: {temp},
-    weather: [{description}], sys: {country}} = data;
+           weather, // Get the entire weather array
+           sys: {country}} = data;
 
     const TEMPERATURE_ELEMENT = CURRENT_WEATHER.querySelector(".temperature");
     const CITY_ELEMENT = CURRENT_WEATHER.querySelector("#city");
     const DESCRIPTION_ELEMENT = CURRENT_WEATHER.querySelector("#desc");
+    const WEATHER_IMAGE = document.querySelector("#weather-img"); // Get the image element
 
     if (TEMPERATURE_ELEMENT) {
         TEMPERATURE_ELEMENT.textContent = `${((temp - 273.15) * (9 / 5) + 32).toFixed(1)}°F`;
     }
 
     if (DESCRIPTION_ELEMENT) {
+        const description = weather[0].description; // Access description from the first element
         DESCRIPTION_ELEMENT.textContent = description.charAt(0).toUpperCase() + description.slice(1);
     }
 
     if (CITY_ELEMENT) {
-        let locationString = `${city}, ${country}`; 
+        let locationString = `${city}, ${country}`;
 
         // Try to fetch US state!
         if (country === "US") {
@@ -184,8 +187,8 @@ async function displayWeatherInfo(data) {
                 if (RESPONSE.ok) {
                     const GEO_DATA = await RESPONSE.json();
                     GEO_DATA.length > 0 && GEO_DATA[0].state
-                    ? locationString = `${city}, ${GEO_DATA[0].state}`
-                    : locationString = `${city}, US`;
+                        ? locationString = `${city}, ${GEO_DATA[0].state}`
+                        : locationString = `${city}, US`;
                 }
             } catch (error) {
                 console.error(`Geocoding Error: ${error}`);
@@ -194,10 +197,42 @@ async function displayWeatherInfo(data) {
 
         CITY_ELEMENT.textContent = locationString;
     }
+
+    if (WEATHER_IMAGE && weather.length > 0) {
+        const WEATHER_ID = weather[0].id;
+        const ICON_CODE = weather[0].icon; // Get the icon code (e.g., "01d")
+        const ICON_FILE_NAME = getWeatherImg(WEATHER_ID, ICON_CODE);
+        if (ICON_FILE_NAME) {
+            WEATHER_IMAGE.src = `images/${ICON_FILE_NAME}`;
+            WEATHER_IMAGE.alt = weather[0].description;
+        }
+    }
 }
 
-function getWeatherImg(weatherID) {
-
+function getWeatherImg(weatherID, iconCode) {
+    if (iconCode) {
+        return `${iconCode}.png`;
+    }
+    if (weatherID >= 200 && weatherID < 300) {
+        return "11d.png"; // Thunderstorm 
+    } else if (weatherID >= 300 && weatherID < 400) {
+        return "09d.png"; // Drizzle 
+    } else if (weatherID >= 500 && weatherID < 600) {
+        return "10d.png"; // Rain 
+    } else if (weatherID >= 600 && weatherID < 700) {
+        return "13d.png"; // Snow 
+    } else if (weatherID >= 700 && weatherID < 800) {
+        return "50d.png"; // Mist 
+    } else if (weatherID === 800) {
+        return "01d.png"; // Clear sky 
+    } else if (weatherID === 801) {
+        return "02d.png"; // Few clouds 
+    } else if (weatherID === 802) {
+        return "03d.png"; // Scattered clouds 
+    } else if (weatherID === 803 || weatherID === 804) {
+        return "04d.png"; // Broken or overcast clouds 
+    }
+    return "01d.png"; 
 }
 
 function displayError(message) {
