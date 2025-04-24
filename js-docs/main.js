@@ -118,5 +118,95 @@ displayDateTime();
 
 /* Weather */
 const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
+const UPPER_CONTAINER = document.querySelector(".upper-container");
+const USER_INPUT = document.querySelector("#user-input");
+const SEARCH_BAR = document.querySelector(".search-bar.expanded");
+const CURRENT_WEATHER = document.querySelector("#current-weather");
+const TEMP = document.querySelector(".temperature");
+const DESC = document.querySelector("#desc");
+const CITY = document.querySelector("#city");
 
+USER_INPUT.addEventListener("submit", async e => {
+    e.preventDefault();
 
+    const CITY = SEARCH_BAR.value;
+
+    if (CITY) {
+        try {
+            const WEATHER_DATA = await getWeatherData(CITY);
+            displayWeatherInfo(WEATHER_DATA);
+        } catch (error) {
+            console.error(error);
+            displayError(error);
+        }
+    } else {
+        displayError("Please enter a city!");
+    }
+});
+
+async function getWeatherData(CITY) {
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}`;
+    const RESPONSE = await fetch(API_URL);
+
+    if (!RESPONSE.ok) {
+        throw new Error("Could not fetch weather data!");
+    }
+
+    return await RESPONSE.json();
+}
+
+async function displayWeatherInfo(data) {
+    console.log(data) // Remove Later!
+
+    const {name: city, main: {temp, humidity},
+    weather: [{description, id}], sys: {country}} = data;
+
+    const TEMPERATURE_ELEMENT = CURRENT_WEATHER.querySelector(".temperature");
+    const CITY_ELEMENT = CURRENT_WEATHER.querySelector("#city");
+    const DESCRIPTION_ELEMENT = CURRENT_WEATHER.querySelector("#desc");
+
+    if (TEMPERATURE_ELEMENT) {
+        TEMPERATURE_ELEMENT.textContent = `${((temp - 273.15) * (9/5) + 32).toFixed(1)}°F`;
+    }
+
+    if (DESCRIPTION_ELEMENT) {
+        DESCRIPTION_ELEMENT.textContent = description;
+    }
+
+    if (CITY_ELEMENT) {
+        if (country === "US") {
+            const GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${API_KEY}`;
+            try {
+                const GEOCODING_RESPONSE = await fetch(GEOCODING_API_URL);
+                if (GEOCODING_RESPONSE.ok) {
+                    const GEOCODING_DATA = await GEOCODING_RESPONSE.json();
+                    if (GEOCODING_DATA && GEOCODING_DATA.length > 0 && GEOCODING_DATA[0].state) {
+                        CITY_ELEMENT.textContent = `${city}, ${GEOCODING_DATA[0].state}`;
+                    } else {
+                        CITY_ELEMENT.textContent = `${city}, US`;
+                    }
+                } else {
+                    CITY_ELEMENT.textContent = `${city}, US`;
+                }
+            } catch (error) {
+                console.error(`Error fetching US state: ${error}`);
+            }
+        } else {
+            CITY_ELEMENT.textContent = `${city}, ${country}`;
+        }
+    }
+}
+
+function getWeatherImg(weatherID) {
+
+}
+
+function displayError(message) {
+    const ERROR_DISPLAY = document.createElement("p");
+    ERROR_DISPLAY.textContent = message;
+    ERROR_DISPLAY.classList.add(".error-display"); // return to later!
+
+    CURRENT_WEATHER.textContent = "";
+    CURRENT_WEATHER.style.display = "flex";
+    CURRENT_WEATHER.appendChild(ERROR_DISPLAY);
+}
