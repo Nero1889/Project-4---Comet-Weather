@@ -9,6 +9,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const SEARCH_BTN = document.querySelector("#search-icon");
 const LOCATION_BTN = document.querySelector("#location-icon");
-
-SEARCH_BTN.onclick = () => console.log("Enter a city!");
-LOCATION_BTN.onclick = () => console.log("Location Ready to go!");
