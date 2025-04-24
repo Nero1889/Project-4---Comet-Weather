@@ -44,7 +44,7 @@ const BG_IMAGES = [
     "images/beijing.jpg",
     "images/seoul.jpg",
     "images/tokyo.jpg",
-    "images/japan.jpg",
+    "images/Japan.jpg",
     "images/hongKong.jpg",
     "images/hoChiMinhCity.jpeg",
     "images/manila.jpg",
