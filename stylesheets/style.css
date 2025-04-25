@@ -186,9 +186,6 @@ body {
     margin-top: 12.5rem;
     margin-right: 17rem;
 }
-#forecast {
-   
-}
 #forecast-title {
     text-align: left;
     margin-bottom: 0.75rem; 
@@ -196,15 +193,6 @@ body {
     font-size: var(--size-xl);
     margin-right: 45%;
 }
-
-
-
-
-
-
-
-
-
 #suggestions-container {
     position: absolute; 
     top: 6rem; 
@@ -218,6 +206,9 @@ body {
 .suggestion-item {
     padding: 12px;
     cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    font-size: var(--size-base);
 }
 .suggestion-item:hover {
     background-color: #222;
