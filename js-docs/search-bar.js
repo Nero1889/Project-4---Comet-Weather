@@ -40,10 +40,10 @@ SEARCH_INPUT.addEventListener("input", async () => {
     }
 });
 
-function displaySuggestions(sugguestions) {
-    SUGGESTIONS_CONTAINER.innerHTML = "";
-    if (sugguestions.length > 0) {
-        sugguestions.forEach(sugguestion => {
+function displaySuggestions(suggestions) {
+    SUGGESTIONS_CONTAINER.innerHTML = ""; 
+    if (suggestions.length > 0) {
+        suggestions.forEach(suggestion => {
             const SUGGESTION_ITEM = document.createElement("div");
             SUGGESTION_ITEM.classList.add("suggestion-item");
 
@@ -55,17 +55,37 @@ function displaySuggestions(sugguestions) {
             LOCATION_ICON.alt = "Mobile Location Icon";
             LOCATION_ICON.style.marginRight = "8px";
 
-            const SUGGUESTION_TEXT = document.createElement("span");
-            SUGGUESTION_TEXT.textContent = `${sugguestion.name}, ${sugguestion.country}`;
-            if (sugguestion.state) {
-                SUGGUESTION_TEXT.textContent = `${sugguestion.name}, ${sugguestion.state}, ${sugguestion.country}`;
+            const TEXT_CONTAINER = document.createElement("div");
+            TEXT_CONTAINER.style.display = "flex";
+            TEXT_CONTAINER.style.flexDirection = "column"; 
+            TEXT_CONTAINER.style.marginLeft = "8px"; 
+
+            const CITY_TEXT = document.createElement("span");
+            CITY_TEXT.textContent = suggestion.name;
+            CITY_TEXT.style.color = "white";
+            CITY_TEXT.style.fontWeight = "normal";
+            CITY_TEXT.style.fontSize = "var(--size-base)";
+
+            const COUNTRY_TEXT = document.createElement("span");
+            COUNTRY_TEXT.style.color = "#737373";
+            COUNTRY_TEXT.style.fontSize = "0.8em"; 
+            COUNTRY_TEXT.style.marginTop = ".25rem";
+
+            let secondaryLocation = suggestion.country;
+            if (suggestion.state) {
+                secondaryLocation = `${suggestion.state}, ${suggestion.country}`;
             }
 
+            COUNTRY_TEXT.textContent = secondaryLocation;
+
+            TEXT_CONTAINER.appendChild(CITY_TEXT);
+            TEXT_CONTAINER.appendChild(COUNTRY_TEXT);
+
             SUGGESTION_ITEM.appendChild(LOCATION_ICON);
-            SUGGESTION_ITEM.appendChild(SUGGUESTION_TEXT);
+            SUGGESTION_ITEM.appendChild(TEXT_CONTAINER);
 
             SUGGESTION_ITEM.addEventListener("click", () => {
-                SEARCH_INPUT.value = SUGGESTION_ITEM.textContent;
+                SEARCH_INPUT.value = `${suggestion.name}, ${secondaryLocation}`; 
                 SUGGESTIONS_CONTAINER.style.display = "none";
                 USER_INPUT.dispatchEvent(new Event("submit"));
             });
