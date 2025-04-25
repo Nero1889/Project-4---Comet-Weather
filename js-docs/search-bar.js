@@ -14,16 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 const SEARCH_INPUT = document.querySelector(".search-bar.expanded");
 const SUGGESTIONS_CONTAINER = document.querySelector("#suggestions-container");
+let updateForecastFunction;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const FORECAST_SCRIPT = document.querySelector("script[src*='forecast.js']");
+    if (FORECAST_SCRIPT && window.updateForecast) {
+        updateForecastFunction = window.updateForecast;
+    } else {
+        console.warn("forecast.js script not found or updateForecast function not in global scope!");
+    }
+});
 
 SEARCH_INPUT.addEventListener("input", async () => {
     const QUERY = SEARCH_INPUT.value.trim();
 
-    if (QUERY.length >= 2) { // Start fetching after a few characters
+    if (QUERY.length >= 2) {
         try {
-            const GEO_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${QUERY}&limit=5&appid=${API_KEY}`; // Limit to a few suggestions
+            const GEO_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${QUERY}&limit=5&appid=${API_KEY}`; 
             const RESPONSE = await fetch(GEO_URL);
             if (RESPONSE.ok) {
                 const GEO_DATA = await RESPONSE.json();
@@ -32,7 +41,7 @@ SEARCH_INPUT.addEventListener("input", async () => {
                 SUGGESTIONS_CONTAINER.style.display = "none";
             }
         } catch (error) {
-            console.error("Error fetching suggestions:", error);
+            console.error(`Error fetching suggestions: ${error}`);
             SUGGESTIONS_CONTAINER.style.display = "none";
         }
     } else {
@@ -41,12 +50,11 @@ SEARCH_INPUT.addEventListener("input", async () => {
 });
 
 function displaySuggestions(suggestions) {
-    SUGGESTIONS_CONTAINER.innerHTML = ""; 
+    SUGGESTIONS_CONTAINER.innerHTML = "";
     if (suggestions.length > 0) {
         suggestions.forEach(suggestion => {
             const SUGGESTION_ITEM = document.createElement("div");
             SUGGESTION_ITEM.classList.add("suggestion-item");
-
             SUGGESTION_ITEM.style.display = "flex";
             SUGGESTION_ITEM.style.alignItems = "center";
 
@@ -57,8 +65,8 @@ function displaySuggestions(suggestions) {
 
             const TEXT_CONTAINER = document.createElement("div");
             TEXT_CONTAINER.style.display = "flex";
-            TEXT_CONTAINER.style.flexDirection = "column"; 
-            TEXT_CONTAINER.style.marginLeft = "8px"; 
+            TEXT_CONTAINER.style.flexDirection = "column";
+            TEXT_CONTAINER.style.marginLeft = "8px";
 
             const CITY_TEXT = document.createElement("span");
             CITY_TEXT.textContent = suggestion.name;
@@ -68,14 +76,13 @@ function displaySuggestions(suggestions) {
 
             const COUNTRY_TEXT = document.createElement("span");
             COUNTRY_TEXT.style.color = "#737373";
-            COUNTRY_TEXT.style.fontSize = "0.8em"; 
+            COUNTRY_TEXT.style.fontSize = "0.8em";
             COUNTRY_TEXT.style.marginTop = ".25rem";
 
             let secondaryLocation = suggestion.country;
             if (suggestion.state) {
                 secondaryLocation = `${suggestion.state}, ${suggestion.country}`;
             }
-
             COUNTRY_TEXT.textContent = secondaryLocation;
 
             TEXT_CONTAINER.appendChild(CITY_TEXT);
@@ -85,9 +92,16 @@ function displaySuggestions(suggestions) {
             SUGGESTION_ITEM.appendChild(TEXT_CONTAINER);
 
             SUGGESTION_ITEM.addEventListener("click", () => {
-                SEARCH_INPUT.value = `${suggestion.name}, ${secondaryLocation}`; 
+                const SELECTED_CITY = suggestion.name;
+                SEARCH_INPUT.value = `${SELECTED_CITY}, ${secondaryLocation}`;
                 SUGGESTIONS_CONTAINER.style.display = "none";
-                USER_INPUT.dispatchEvent(new Event("submit"));
+                if (updateForecastFunction) {
+                    updateForecastFunction(SELECTED_CITY); 
+                } else {
+                    console.warn("updateForecast function is not available!");
+                }
+
+                document.dispatchEvent(new CustomEvent("citySelected", {detail:{cityName: SELECTED_CITY}}));
             });
 
             SUGGESTIONS_CONTAINER.appendChild(SUGGESTION_ITEM);
@@ -98,7 +112,6 @@ function displaySuggestions(suggestions) {
     }
 }
 
-// Ensure the suggestions container is hidden when the search bar loses focus
 SEARCH_INPUT.addEventListener("blur", () => {
     setTimeout(() => {
         SUGGESTIONS_CONTAINER.style.display = "none";
