@@ -31,7 +31,6 @@ html {
 body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: black;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
     color: white;   
 }
 .container {
@@ -47,11 +46,6 @@ body {
 .section {
     margin-top: 5rem;
 }
-
-
-
-/* ======================================================================= */
-
 .upper-container {
     display: flex;
     align-items: center;
@@ -87,7 +81,7 @@ body {
     justify-content: center;
     margin-top: 2rem;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 2.5rem;
 }
 #current-weather, #forecast {
     background-color: var(--box-bg);
@@ -109,6 +103,15 @@ body {
     margin-bottom: 1rem;
     font-weight: 300;
 }
+/* #toggle-temp-btn {
+    background-color: rgb(36, 36, 36);
+    color: var(--txt);
+    border: none;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 50px;
+    margin-left: 1rem;
+} */
 .temperature {
     font-size: var(--size-5xl);
 }
@@ -192,6 +195,32 @@ body {
     font-weight: 400;
     font-size: var(--size-xl);
     margin-right: 45%;
+}
+
+
+
+
+
+
+
+
+
+#suggestions-container {
+    position: absolute; 
+    top: 6rem; 
+    left: 2rem; 
+    width: 90vw;
+    background-color: var(--box-bg);
+    color: white;
+    z-index: 999;
+    display: none; 
+}
+.suggestion-item {
+    padding: 12px;
+    cursor: pointer;
+}
+.suggestion-item:hover {
+    background-color: #222;
 }
 
 
