@@ -48,15 +48,15 @@ const BG_IMAGES = [
     "images/hongKong.jpg",
     "images/hoChiMinhCity.jpeg",
     "images/manila.jpg",
-    
+
     // Australia
     "images/sydney.jpg",
 
     // Antarctica
     "images/antarctica.jpg",
 
-    // Earth 
-    "images/milkyWay.jpg", 
+    // Earth
+    "images/milkyWay.jpg",
     "images/jungle.jpeg",
     "images/waterfall.jpg",
     "images/desert.jpg",
@@ -70,8 +70,8 @@ BG_CONTAINER.style.top = "0";
 BG_CONTAINER.style.left = "0";
 BG_CONTAINER.style.width = "100%";
 BG_CONTAINER.style.height = "100%";
-BG_CONTAINER.style.zIndex = "-100"; 
-BODY.insertBefore(BG_CONTAINER, BODY.firstChild); 
+BG_CONTAINER.style.zIndex = "-100";
+BODY.insertBefore(BG_CONTAINER, BODY.firstChild);
 
 function chooseRandomBgImg() {
     const RANDOM_INDEX = Math.floor(Math.random() * BG_IMAGES.length);
@@ -100,11 +100,29 @@ const DATE = document.querySelector("#date");
 
 function displayDateTime() {
     const NOW = new Date();
-    const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday",
-    "Thursday", "Friday", "Saturday"];
-    const MONTHS = ["January", "February", "March", "April", "May",
-    "June", "July", "August", "September", "October", "November",
-    "December"];
+    const DAYS_OF_WEEK = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+    const MONTHS = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
 
     const DAY_OF_WEEK = DAYS_OF_WEEK[NOW.getDay()];
     const DAY_OF_MONTH = NOW.getDate();
@@ -120,37 +138,17 @@ displayDateTime();
 const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
 const UPPER_CONTAINER = document.querySelector(".upper-container");
 const USER_INPUT = document.querySelector("#user-input");
-const SEARCH_BAR = document.querySelector(".search-bar.expanded"); /* city input */
-const CURRENT_WEATHER = document.querySelector("#current-weather"); /* card */
+const SEARCH_BAR = document.querySelector(".search-bar.expanded");
+const CURRENT_WEATHER = document.querySelector("#current-weather");
 const TEMP = document.querySelector(".temperature");
 const DESC = document.querySelector("#desc");
-const CITY = document.querySelector("#city");
+const CITY_ELEMENT_MAIN = document.querySelector("#city"); 
 
-USER_INPUT.addEventListener("submit", async e => {
-    e.preventDefault();
-
-    const CITY = SEARCH_BAR.value;
-
-    if (CITY) {
-        try {
-            const WEATHER_DATA = await getWeatherData(CITY);
-            displayWeatherInfo(WEATHER_DATA);
-        } catch (error) {
-            console.error(error);
-            displayError(error);
-        }
-    } else {
-        displayError("Please enter a city!");
-    }
-});
-
-async function getWeatherData(CITY) {
-    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}`;
+async function fetchWeatherData(city) {
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
     const RESPONSE = await fetch(API_URL);
 
-    if (!RESPONSE.ok) {
-        throw new Error("Could not fetch weather data!");
-    }
+    if (!RESPONSE.ok) throw new Error("Could not fetch weather data!");
 
     return await RESPONSE.json();
 }
@@ -158,20 +156,19 @@ async function getWeatherData(CITY) {
 async function displayWeatherInfo(data) {
     console.log(data); // City data for debugging and troubleshooting
 
-    const {name: city, main: {temp},
-    weather, sys: {country}} = data;
+    const {name: city, main: {temp}, weather, sys: {country}} = data;
 
     const TEMPERATURE_ELEMENT = CURRENT_WEATHER.querySelector(".temperature");
     const CITY_ELEMENT = CURRENT_WEATHER.querySelector("#city");
     const DESCRIPTION_ELEMENT = CURRENT_WEATHER.querySelector("#desc");
-    const WEATHER_IMAGE = document.querySelector("#weather-img"); 
+    const WEATHER_IMAGE = document.querySelector("#weather-img");
 
     if (TEMPERATURE_ELEMENT) {
         TEMPERATURE_ELEMENT.textContent = `${((temp - 273.15) * (9 / 5) + 32).toFixed(1)}°F`;
     }
 
     if (DESCRIPTION_ELEMENT) {
-        const description = weather[0].description; 
+        const description = weather[0].description;
         DESCRIPTION_ELEMENT.textContent = description.charAt(0).toUpperCase() + description.slice(1);
     }
 
@@ -193,13 +190,12 @@ async function displayWeatherInfo(data) {
                 console.error(`Geocoding Error: ${error}`);
             }
         }
-
         CITY_ELEMENT.textContent = locationString;
     }
 
     if (WEATHER_IMAGE && weather.length > 0) {
         const WEATHER_ID = weather[0].id;
-        const ICON_CODE = weather[0].icon; 
+        const ICON_CODE = weather[0].icon;
         const ICON_FILE_NAME = getWeatherImg(WEATHER_ID, ICON_CODE);
         if (ICON_FILE_NAME) {
             WEATHER_IMAGE.src = `images/${ICON_FILE_NAME}`;
@@ -212,26 +208,26 @@ function getWeatherImg(weatherID, iconCode) {
     if (iconCode) {
         return `${iconCode}.png`;
     }
-    if (weatherID >= 200 && weatherID < 300) 
-        return "11d.png"; // Thunderstorm 
-    else if (weatherID >= 300 && weatherID < 400) 
-        return "09d.png"; // Drizzle 
-    else if (weatherID >= 500 && weatherID < 600) 
-        return "10d.png"; // Rain 
-    else if (weatherID >= 600 && weatherID < 700) 
-        return "13d.png"; // Snow 
-    else if (weatherID >= 700 && weatherID < 800) 
-        return "50d.png"; // Mist 
-    else if (weatherID === 800) 
-        return "01d.png"; // Clear sky 
-    else if (weatherID === 801) 
-        return "02d.png"; // Few clouds 
-    else if (weatherID === 802) 
-        return "03d.png"; // Scattered clouds 
-    else if (weatherID === 803 || weatherID === 804) 
-        return "04d.png"; // Broken or overcast clouds 
-    
-    return "01d.png"; 
+    if (weatherID >= 200 && weatherID < 300)
+        return "11d.png"; // Thunderstorm
+    else if (weatherID >= 300 && weatherID < 400)
+        return "09d.png"; // Drizzle
+    else if (weatherID >= 500 && weatherID < 600)
+        return "10d.png"; // Rain
+    else if (weatherID >= 600 && weatherID < 700)
+        return "13d.png"; // Snow
+    else if (weatherID >= 700 && weatherID < 800)
+        return "50d.png"; // Mist
+    else if (weatherID === 800)
+        return "01d.png"; // Clear sky
+    else if (weatherID === 801)
+        return "02d.png"; // Few clouds
+    else if (weatherID === 802)
+        return "03d.png"; // Scattered clouds
+    else if (weatherID === 803 || weatherID === 804)
+        return "04d.png"; // Broken or overcast clouds
+
+    return "01d.png";
 }
 
 function displayError(message) {
@@ -243,3 +239,15 @@ function displayError(message) {
     CURRENT_WEATHER.style.display = "flex";
     CURRENT_WEATHER.appendChild(ERROR_DISPLAY);
 }
+
+// Listen for the custom event dispatched from search-bar.js
+document.addEventListener("citySelected", async (event) => {
+    const SELECTED_CITY_NAME = event.detail.cityName;
+    try {
+        const WEATHER_DATA = await fetchWeatherData(SELECTED_CITY_NAME);
+        displayWeatherInfo(WEATHER_DATA);
+    } catch (error) {
+        console.error(`Error fetching current weather after city selection: ${error}`);
+        displayError("Failed to update current weather! ):");
+    }
+});
