@@ -40,33 +40,34 @@ SEARCH_INPUT.addEventListener("input", async () => {
     }
 });
 
-function displaySuggestions(suggestions) {
-    SUGGESTIONS_CONTAINER.innerHTML = ""; // Clear previous suggestions
-    if (suggestions.length > 0) {
-        suggestions.forEach(suggestion => {
+function displaySuggestions(sugguestions) {
+    SUGGESTIONS_CONTAINER.innerHTML = "";
+    if (sugguestions.length > 0) {
+        sugguestions.forEach(sugguestion => {
             const SUGGESTION_ITEM = document.createElement("div");
             SUGGESTION_ITEM.classList.add("suggestion-item");
 
-            // Create an image element for the location icon
-            const locationIcon = document.createElement("img");
-            locationIcon.src = "icons/location_on_24dp_737373_FILL0_wght400_GRAD0_opsz24.png"; 
-            locationIcon.alt = "Mobile Location Icon";
-            locationIcon.style.marginRight = "8px"; // Add some spacing
+            SUGGESTION_ITEM.style.display = "flex";
+            SUGGESTION_ITEM.style.alignItems = "center";
 
-            const suggestionText = document.createElement("span");
-            suggestionText.textContent = `${suggestion.name}, ${suggestion.country}`;
-            if (suggestion.state) {
-                suggestionText.textContent = `${suggestion.name}, ${suggestion.state}, ${suggestion.country}`;
+            const LOCATION_ICON = document.createElement("img");
+            LOCATION_ICON.src = "icons/location_on_24dp_737373_FILL0_wght400_GRAD0_opsz24.png";
+            LOCATION_ICON.alt = "Mobile Location Icon";
+            LOCATION_ICON.style.marginRight = "8px";
+
+            const SUGGUESTION_TEXT = document.createElement("span");
+            SUGGUESTION_TEXT.textContent = `${sugguestion.name}, ${sugguestion.country}`;
+            if (sugguestion.state) {
+                SUGGUESTION_TEXT.textContent = `${sugguestion.name}, ${sugguestion.state}, ${sugguestion.country}`;
             }
 
-            // Append the icon and text to the suggestion item
-            SUGGESTION_ITEM.appendChild(locationIcon);
-            SUGGESTION_ITEM.appendChild(suggestionText);
+            SUGGESTION_ITEM.appendChild(LOCATION_ICON);
+            SUGGESTION_ITEM.appendChild(SUGGUESTION_TEXT);
 
             SUGGESTION_ITEM.addEventListener("click", () => {
-                SEARCH_INPUT.value = suggestionText.textContent;
+                SEARCH_INPUT.value = SUGGESTION_ITEM.textContent;
                 SUGGESTIONS_CONTAINER.style.display = "none";
-                USER_INPUT.dispatchEvent(new Event("submit")); // Optionally submit the form
+                USER_INPUT.dispatchEvent(new Event("submit"));
             });
 
             SUGGESTIONS_CONTAINER.appendChild(SUGGESTION_ITEM);
@@ -77,26 +78,8 @@ function displaySuggestions(suggestions) {
     }
 }
 
-// Optionally, handle form submission when Enter is pressed
-USER_INPUT.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const city = SEARCH_INPUT.value.split(',')[0].trim(); // Extract city name
-    if (city) {
-        try {
-            const WEATHER_DATA = await getWeatherData(city);
-            displayWeatherInfo(WEATHER_DATA);
-        } catch (error) {
-            console.error(error);
-            displayError(error);
-        }
-    } else {
-        displayError("Please enter a city!");
-    }
-});
-
 // Ensure the suggestions container is hidden when the search bar loses focus
 SEARCH_INPUT.addEventListener("blur", () => {
-    // Use a slight delay to allow click on suggestions to register
     setTimeout(() => {
         SUGGESTIONS_CONTAINER.style.display = "none";
     }, 200);
