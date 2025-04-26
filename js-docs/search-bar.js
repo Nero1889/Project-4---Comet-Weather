@@ -14,16 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// js-docs/search-bar.js
 const SEARCH_INPUT = document.querySelector(".search-bar.expanded");
 const SUGGESTIONS_CONTAINER = document.querySelector("#suggestions-container");
-let updateForecastFunction;
+const SEARCH_OVERLAY = document.getElementById("search-overlay"); // Get the overlay element
 
-document.addEventListener("DOMContentLoaded", () => {
-    const FORECAST_SCRIPT = document.querySelector("script[src*='forecast.js']");
-    if (FORECAST_SCRIPT && window.updateForecast) {
+// Make sure the updateForecast function from forecast.js is accessible
+let updateForecastFunction;
+document.addEventListener('DOMContentLoaded', () => {
+    const forecastScript = document.querySelector('script[src*="forecast.js"]');
+    if (forecastScript && window.updateForecast) {
         updateForecastFunction = window.updateForecast;
     } else {
-        console.warn("forecast.js script not found or updateForecast function not in global scope!");
+        console.warn('forecast.js script not found or updateForecast function not in global scope.');
     }
 });
 
@@ -32,7 +35,7 @@ SEARCH_INPUT.addEventListener("input", async () => {
 
     if (QUERY.length >= 2) {
         try {
-            const GEO_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${QUERY}&limit=5&appid=${API_KEY}`; 
+            const GEO_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${QUERY}&limit=5&appid=${API_KEY}`; // Ensure API_KEY is defined globally or in this file
             const RESPONSE = await fetch(GEO_URL);
             if (RESPONSE.ok) {
                 const GEO_DATA = await RESPONSE.json();
@@ -41,7 +44,7 @@ SEARCH_INPUT.addEventListener("input", async () => {
                 SUGGESTIONS_CONTAINER.style.display = "none";
             }
         } catch (error) {
-            console.error(`Error fetching suggestions: ${error}`);
+            console.error("Error fetching suggestions:", error);
             SUGGESTIONS_CONTAINER.style.display = "none";
         }
     } else {
@@ -93,7 +96,7 @@ function displaySuggestions(suggestions) {
 
             SUGGESTION_ITEM.addEventListener("click", () => {
                 const SELECTED_CITY = suggestion.name;
-                SEARCH_INPUT.value = `${SELECTED_CITY}, ${secondaryLocation}`;
+                SEARCH_INPUT.value = `${selectedCity}, ${secondaryLocation}`;
                 SUGGESTIONS_CONTAINER.style.display = "none";
                 if (updateForecastFunction) {
                     updateForecastFunction(SELECTED_CITY); 
@@ -101,7 +104,11 @@ function displaySuggestions(suggestions) {
                     console.warn("updateForecast function is not available!");
                 }
 
-                document.dispatchEvent(new CustomEvent("citySelected", {detail:{cityName: SELECTED_CITY}}));
+                document.dispatchEvent(new CustomEvent("citySelected", {detail: {cityName: SELECTED_CITY}}));
+
+                if (SEARCH_OVERLAY) {
+                    SEARCH_OVERLAY.classList.remove("open");
+                }
             });
 
             SUGGESTIONS_CONTAINER.appendChild(SUGGESTION_ITEM);
@@ -116,4 +123,24 @@ SEARCH_INPUT.addEventListener("blur", () => {
     setTimeout(() => {
         SUGGESTIONS_CONTAINER.style.display = "none";
     }, 200);
+});
+
+SEARCH_INPUT.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && SEARCH_INPUT.value.trim() !== "") {
+        event.preventDefault();
+
+        const SEARCHED_CITY = SEARCH_INPUT.value.trim();
+
+        if (updateForecastFunction) {
+            updateForecastFunction(SEARCHED_CITY);
+        } else {
+            console.warn("updateForecast function is not available!");
+        }
+
+        document.dispatchEvent(new CustomEvent('citySelected', {detail: {cityName: SEARCHED_CITY}}));
+
+        if (SEARCH_OVERLAY) {
+            SEARCH_OVERLAY.classList.remove("open");
+        }
+    }
 });
