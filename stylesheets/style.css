@@ -212,7 +212,7 @@ body {
 .forecast-day {
     color: white;
     margin-right: 1rem; 
-    width: 70px;
+    width: 95px;
 }
 .forecast-icon {
     width: var(--size-4xl); 
