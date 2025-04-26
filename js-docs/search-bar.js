@@ -1,18 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const SEARCH_ICON = document.getElementById("search-icon");
-    const SEARCH_OVERLAY = document.getElementById("search-overlay");
-    const BACK_BTN = document.getElementById("back-btn");
-
-    SEARCH_ICON.addEventListener("click", () => SEARCH_OVERLAY.classList.add("open"));
-    BACK_BTN.addEventListener("click", () => SEARCH_OVERLAY.classList.remove("open"));
-});
-
-
-
-
-
-
-
+const SEARCH_ICON = document.getElementById("search-icon");
+SEARCH_ICON.addEventListener("click", () => SEARCH_OVERLAY.classList.add("open"));
 
 const SEARCH_INPUT = document.querySelector(".search-bar.expanded");
 const SUGGESTIONS_CONTAINER = document.querySelector("#suggestions-container");
