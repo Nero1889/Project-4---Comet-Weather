@@ -190,10 +190,38 @@ body {
     margin-bottom: .5rem;
 }
 #forecast {
-    border: 1px solid #b71234;
+    display: flex; 
+    flex-direction: column; 
+    padding: 1rem;
 }
 #forecast-title {
     margin-bottom: 1rem;
+}
+.forecast-columns {
+    display: flex;
+    flex-direction: column; 
+    width: 100%; 
+}
+.forecast-day-column {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    padding: .25rem; 
+    justify-content: space-between;
+}
+.forecast-day {
+    color: white;
+    margin-right: 1rem; 
+    width: 70px;
+}
+.forecast-icon {
+    width: var(--size-4xl); 
+    height: var(--size-4xl);
+    margin-right: 1rem;
+}
+.forecast-temp {
+    color: white;
+    font-size: var(--size-sm);
 }
 
 
