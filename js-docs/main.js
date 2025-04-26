@@ -134,7 +134,7 @@ function displayDateTime() {
 
 displayDateTime();
 
-/* Weather */
+/* Fetch Weather */
 const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
 const UPPER_CONTAINER = document.querySelector(".upper-container");
 const USER_INPUT = document.querySelector("#user-input");
@@ -240,7 +240,6 @@ function displayError(message) {
     CURRENT_WEATHER.appendChild(ERROR_DISPLAY);
 }
 
-// Listen for the custom event dispatched from search-bar.js
 document.addEventListener("citySelected", async (event) => {
     const SELECTED_CITY_NAME = event.detail.cityName;
     try {
@@ -250,4 +249,26 @@ document.addEventListener("citySelected", async (event) => {
         console.error(`Error fetching current weather after city selection: ${error}`);
         displayError("Failed to update current weather! ):");
     }
+});
+
+
+/* Default City (Madison, WI) */
+fetchWeatherData("Madison, Wisconsin").then(displayWeatherInfo).catch(error => {
+    console.error(`Error fetching initial weather data: ${error}`);
+});
+
+document.addEventListener('citySelected', async (e) => {
+    const SELECTED_CITY_NAME = e.detail.cityName;
+    try {
+        const WEATHER_DATA = await fetchWeatherData(SELECTED_CITY_NAME);
+        displayWeatherInfo(WEATHER_DATA);
+    } catch (error) {
+        console.error(`Error fetching current weather after city selection: ${error}`);
+        displayError("Failed to update current weather!");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const SEARCH_INPUT = document.querySelector(".search-bar.expanded");
+    if (SEARCH_INPUT) SEARCH_INPUT.value = "Madison, Wisconsin";
 });
