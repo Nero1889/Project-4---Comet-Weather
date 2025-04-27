@@ -2,6 +2,7 @@
 * {
     margin: 0;
     padding: 0;
+    /* border: 1px solid #b71234; */
 }
 :root {
     /* Color Theme */
@@ -83,8 +84,11 @@ body {
     flex-direction: column;
     gap: 2.5rem;
 }
-#current-weather, #forecast {
+.box, #forecast {
     background-color: var(--box-bg);
+    /* background-color: #141414b1;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgb(42, 42, 42); */
     width: 70%;
     color: var(--txt);
     border-radius: 25px;
@@ -93,7 +97,7 @@ body {
 #weather-img {
     position: absolute;
     margin-top:-7rem;
-    margin-left: 40%;
+    margin-left: 45%;
 }
 .card-titles, .temperature, #desc {
     color: white;
@@ -164,7 +168,7 @@ body {
 }
 #back-btn {
     position: absolute;
-    margin-top: -3.4rem;
+    margin-top: -3.45rem;
     margin-left: 4.3rem;
 }
 .icon {
@@ -192,7 +196,6 @@ body {
 #forecast {
     display: flex; 
     flex-direction: column; 
-    padding: 1rem;
 }
 #forecast-title {
     margin-bottom: 1rem;
@@ -222,6 +225,41 @@ body {
 .forecast-temp {
     color: white;
     font-size: var(--size-sm);
+}
+.main-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
+    /* border: 1px solid purple; */
+}
+
+#highlights-container {
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.sub-box {
+    background-color: #161617;
+    border-radius: 25px;
+    padding: 15px;
+}
+.sub-box:first-child {
+    margin-top: 1rem;
+}
+.highlights-title {
+    color: var(--txt);
+    font-weight: normal;
+    font-size: var(--size-base);
+}
+
+#air-quality-bar {
+    background: linear-gradient(to right,
+    green, lime, yellow, orange,
+    orangered, #b71234, rgb(128, 0, 41));
+    height: 5px;
 }
 
 
