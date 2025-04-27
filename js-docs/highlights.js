@@ -1,3 +1,4 @@
+/* Fetch Air Quality Data */
 const AIR_QUALITY_ELEMENT = document.querySelector("#air-quality");
 const AIR_QUALITY_BAR = document.querySelector("#air-quality-bar");
 
@@ -19,7 +20,6 @@ function displayAirQuality(data) {
 
         let aqi_0_to_500;
         let airQualityText = "";
-        let barColor = "";
         let barWidthPercentage;
 
         switch (AQI_1_TO_5) {
@@ -44,7 +44,7 @@ function displayAirQuality(data) {
                 barWidthPercentage = (aqi_0_to_500 / 500) * 100;
                 break;
             case 5:
-                aqi_0_to_500 = Math.round(250 + (aqi_1_to_5 - 4) * 100); // 201-500+
+                aqi_0_to_500 = Math.round(250 + (aqi_0_to_500 - 4) * 100); // 201-500+
                 airQualityText = "Very Unhealthy";
                 barWidthPercentage = Math.min((aqi_0_to_500 / 500) * 100, 100); // Cap at 100%
                 break;
@@ -86,11 +86,11 @@ const SUNRISE_TIME_ELEMENT = document.querySelector("#rise-set-container .sub-ri
 const SUNSET_TIME_ELEMENT = document.querySelector("#rise-set-container .sub-rise-set-container:last-child .time");
 
 function formatTime(timestamp, timezoneOffsetSeconds) {
-    const date = new Date((timestamp + timezoneOffsetSeconds) * 1000); // Apply timezone offset and convert to milliseconds
-    const hours = date.getUTCHours(); // Use UTC hours and minutes after applying offset
-    const minutes = date.getUTCMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12; // Handle 12 AM/PM
-    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+    const DATE = new Date((timestamp + timezoneOffsetSeconds) * 1000); 
+    const HOURS = DATE.getUTCHours(); 
+    const MINUTES = DATE.getUTCMinutes();
+    const MERIDIEM = HOURS >= 12 ? "PM" : "AM";
+    const FORMATTED_HOURS = HOURS % 12 === 0 ? 12 : HOURS % 12; 
+    const FORMATTED_MINUTES = MINUTES < 10 ? "0" + MINUTES : MINUTES;
+    return `${FORMATTED_HOURS}:${FORMATTED_MINUTES} ${MERIDIEM}`;
 }
