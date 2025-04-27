@@ -3,7 +3,7 @@ const AIR_QUALITY_ELEMENT = document.querySelector("#air-quality");
 const AIR_QUALITY_BAR = document.querySelector("#air-quality-bar");
 
 async function fetchAirQualityData(lat, lon) {
-    const AIR_POLLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+    const AIR_POLLUTION_API_URL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
     const RESPONSE = await fetch(AIR_POLLUTION_API_URL);
 
     if (!RESPONSE.ok) {
