@@ -13,7 +13,7 @@
         <div class="upper-container">
             <h1 id="app-title">COMET WEATHER</h1>
             <input class="search-bar" type="text" placeholder=" Search!">
-            <div id="search-overlay" class="search-overlay">
+            <div class="search-overlay" id="search-overlay">
                 <div class="search-overlay-content">
                     <form id="user-input">
                         <input class="search-bar expanded" type="text"
@@ -30,21 +30,21 @@
             <div id="mobile-btn-container">
                 <img id="search-icon"
                 src="icons/search_30dp_666666_FILL0_wght400_GRAD0_opsz24.png"
-                alt="Search Icon">
+                alt="Search Icon" title="Search!">
                 <img id="location-icon"
                 src="icons/location_on_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                alt="Location Icon">
+                alt="Location Icon" title="Use Exact Location">
             </div>
             <button id="current-location-btn">Current Location</button>
         </div>
     </header>
     <main>
         <div class="side-boxes">
-            <div id="current-weather">
+            <div class="box">
                 <div id="info-container">
                     <h3 class="card-titles">Now</h3>
-                    <h1 class="temperature">70°</h1> 
-                    <h3 id="desc">Broken Clouds
+                    <h1 class="temperature"></h1> 
+                    <h3 id="desc">
                         <!-- <button id="toggle-temp-btn">F°/C°</button> -->
                     </h3>
                     <div class="vertical-bar"></div>
@@ -61,7 +61,7 @@
                         <img class="icon"
                         src="icons/location_on_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
                         alt="Location Icon">
-                        <p id="city">Irvine, California</p>
+                        <p id="city"></p>
                     </div>
                 </div>
             </div>
@@ -71,27 +71,27 @@
                 <div class="forecast-columns">
                     <div class="forecast-day-column" id="day-col-1">
                         <p class="forecast-day"></p>
-                            <img class="forecast-icon" src="" alt="Weather Icon">
+                        <img class="forecast-icon" src="" alt="Weather Icon">
                         <p class="forecast-temp"></p>
                     </div>
                     <div class="forecast-day-column" id="day-col-2">
                         <p class="forecast-day"></p>
-                            <img class="forecast-icon" src="" alt="Weather Icon">
+                        <img class="forecast-icon" src="" alt="Weather Icon">
                         <p class="forecast-temp"></p>
                     </div>
                     <div class="forecast-day-column" id="day-col-3">
                         <p class="forecast-day"></p>
-                            <img class="forecast-icon" src="" alt="Weather Icon">
+                        <img class="forecast-icon" src="" alt="Weather Icon">
                         <p class="forecast-temp"></p>
                     </div>
                     <div class="forecast-day-column" id="day-col-4">
                         <p class="forecast-day"></p>
-                            <img class="forecast-icon" src="" alt="Weather Icon">
+                        <img class="forecast-icon" src="" alt="Weather Icon">
                         <p class="forecast-temp"></p>
                     </div>
                     <div class="forecast-day-column" id="day-col-5">
                         <p class="forecast-day"></p>
-                            <img class="forecast-icon" src="" alt="Weather Icon">
+                        <img class="forecast-icon" src="" alt="Weather Icon">
                         <p class="forecast-temp"></p>
                     </div>
                 </div>
@@ -99,6 +99,46 @@
         </div>
 
         <div class="main-boxes">
+            <div id="highlights" class="box">
+                <h3 class="card-titles">Highlights</h3>
+                <div id="highlights-container">
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Air Quality Index</h3>
+                        <br>
+                        <img src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Air Icon">
+                        <h3>6.40 <h3>PM<span>2.5</span></h3></h3>
+                        <div id="air-quality-bar">a</div>
+                    </div>
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Sunrise and Sunset</h3>
+                        <br>
+                        b
+                    </div>
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Humidity</h3>
+                        <br>
+                        c
+                    </div>
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Pressure</h3>
+                        <br>
+                        d
+                    </div>
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Visibility</h3>
+                        <br>
+                        e
+                    </div>
+                    <div class="sub-box">
+                        <h3 class="highlights-title">Feels Like</h3>
+                        <br>
+                        f
+                    </div>
+                </div>
+            </div>
+            <div id="todays-weather" class="box">
+                <h3 class="card-titles">Today At:</h3>
+            </div>
             
         </div>
     </main>
