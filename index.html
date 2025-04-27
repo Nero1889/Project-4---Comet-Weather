@@ -104,15 +104,29 @@
                 <div id="highlights-container">
                     <div class="sub-box">
                         <h3 class="highlights-title">Air Quality Index</h3>
-                        <br>
-                        <img src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Air Icon">
-                        <h3>6.40 <h3>PM<span>2.5</span></h3></h3>
-                        <div id="air-quality-bar">a</div>
+                        <div id="air-quality-container">
+                            <img id="air-icon"
+                            src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                            alt="Air Icon">
+                            <h3 id="air-quality">(Air quality here)</h3>
+                        </div>
+                        <div id="air-quality-bar"></div>
                     </div>
                     <div class="sub-box">
                         <h3 class="highlights-title">Sunrise and Sunset</h3>
                         <br>
-                        b
+                        <div id="rise-set-container">
+                            <div class="sub-rise-set-container">
+                                <img id="sun" src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Sun Icon">
+                                <h3>Sunrise</h3>
+                                <h3 class="time">5:56 AM</h3>
+                            </div>
+                            <div class="sub-rise-set-container">
+                                <img id="moon" src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Moon Icon">
+                                <h3>Sunset</h3>
+                                <h3 class="time">7:53 AM</h3>
+                            </div>
+                        </div>
                     </div>
                     <div class="sub-box">
                         <h3 class="highlights-title">Humidity</h3>
@@ -148,6 +162,7 @@
         <script src="js-docs/main.js"></script>
         <script src="js-docs/search-bar.js"></script>
         <script src="js-docs/forecast.js"></script>
+        <script src="js-docs/highlights.js"></script>
     </footer>
 </body>
 </html>
