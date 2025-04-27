@@ -139,7 +139,7 @@ const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
 const UPPER_CONTAINER = document.querySelector(".upper-container");
 const USER_INPUT = document.querySelector("#user-input");
 const SEARCH_BAR = document.querySelector(".search-bar.expanded");
-const CURRENT_WEATHER = document.querySelector("#current-weather");
+const BOX = document.querySelector(".box");
 const TEMP = document.querySelector(".temperature");
 const DESC = document.querySelector("#desc");
 const CITY_ELEMENT_MAIN = document.querySelector("#city"); 
@@ -158,9 +158,9 @@ async function displayWeatherInfo(data) {
 
     const {name: city, main: {temp}, weather, sys: {country}} = data;
 
-    const TEMPERATURE_ELEMENT = CURRENT_WEATHER.querySelector(".temperature");
-    const CITY_ELEMENT = CURRENT_WEATHER.querySelector("#city");
-    const DESCRIPTION_ELEMENT = CURRENT_WEATHER.querySelector("#desc");
+    const TEMPERATURE_ELEMENT = BOX.querySelector(".temperature");
+    const CITY_ELEMENT = BOX.querySelector("#city");
+    const DESCRIPTION_ELEMENT = BOX.querySelector("#desc");
     const WEATHER_IMAGE = document.querySelector("#weather-img");
 
     if (TEMPERATURE_ELEMENT) {
@@ -202,6 +202,29 @@ async function displayWeatherInfo(data) {
             WEATHER_IMAGE.alt = weather[0].description;
         }
     }
+
+    if (data && data.coord) {
+        const { lat, lon } = data.coord;
+        const airQualityData = await fetchAirQualityData(lat, lon);
+        displayAirQuality(airQualityData);
+    }
+
+    /* Check for Sunrise and Sunset */
+    if (data && data.sys && data.timezone !== undefined) {
+        const sunriseTimestamp = data.sys.sunrise;
+        const sunsetTimestamp = data.sys.sunset;
+        const timezoneOffsetSeconds = data.timezone;
+
+        const sunriseTimeFormatted = formatTime(sunriseTimestamp, timezoneOffsetSeconds);
+        const sunsetTimeFormatted = formatTime(sunsetTimestamp, timezoneOffsetSeconds);
+
+        if (SUNRISE_TIME_ELEMENT) {
+            SUNRISE_TIME_ELEMENT.textContent = sunriseTimeFormatted;
+        }
+        if (SUNSET_TIME_ELEMENT) {
+            SUNSET_TIME_ELEMENT.textContent = sunsetTimeFormatted;
+        }
+    }
 }
 
 function getWeatherImg(weatherID, iconCode) {
@@ -235,9 +258,9 @@ function displayError(message) {
     ERROR_DISPLAY.textContent = message;
     ERROR_DISPLAY.classList.add(".error-display"); // return to later!
 
-    CURRENT_WEATHER.textContent = "";
-    CURRENT_WEATHER.style.display = "flex";
-    CURRENT_WEATHER.appendChild(ERROR_DISPLAY);
+    BOX.textContent = "";
+    BOX.style.display = "flex";
+    BOX.appendChild(ERROR_DISPLAY);
 }
 
 document.addEventListener("citySelected", async (event) => {
