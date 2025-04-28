@@ -320,9 +320,12 @@ body {
 .box-pair {
     background-color: #161617;
     height: 3.5rem;
-    padding: 25px;
+    padding: 20px;
     border-radius: 25px;
-    width: 30%;
+    width: 31%;
+}
+.box-pair #visibility, #feels-like {
+    font-size: var(--size-sm);
 }
 .highlights-alignment {
     margin-top: .5rem;
