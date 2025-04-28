@@ -1,6 +1,7 @@
 /* Fetch Air Quality Data */
 const AIR_QUALITY_ELEMENT = document.querySelector("#air-quality");
 const AIR_QUALITY_BAR = document.querySelector("#air-quality-bar");
+const AQI_INDICATOR = document.querySelector("#aqi-indicator"); 
 
 async function fetchAirQualityData(lat, lon) {
     const AIR_POLLUTION_API_URL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
@@ -16,11 +17,11 @@ async function fetchAirQualityData(lat, lon) {
 
 function displayAirQuality(data) {
     if (data && data.list && data.list.length > 0) {
-        const AQI_1_TO_5 = data.list[0].main.aqi; 
+        const AQI_1_TO_5 = data.list[0].main.aqi;
 
         let aqi_0_to_500;
         let airQualityText = "";
-        let barWidthPercentage;
+        let barWidthPercentage = 0; // Initialize to 0
 
         switch (AQI_1_TO_5) {
             case 1:
@@ -51,46 +52,37 @@ function displayAirQuality(data) {
             default:
                 aqi_0_to_500 = 0;
                 airQualityText = "Unknown";
-                barWidthPercentage = 100;
+                barWidthPercentage = 0;
         }
 
         if (AIR_QUALITY_ELEMENT) {
             AIR_QUALITY_ELEMENT.textContent = `${airQualityText} (AQI: ${aqi_0_to_500})`;
         }
+
+        // Update the position of the indicator
+        if (AQI_INDICATOR && AIR_QUALITY_BAR) {
+            const indicatorPosition = barWidthPercentage;
+            AQI_INDICATOR.style.left = `${indicatorPosition}%`;
+        }
     } else {
         if (AIR_QUALITY_ELEMENT) {
             AIR_QUALITY_ELEMENT.textContent = "No air quality data available!";
         }
+        if (AQI_INDICATOR) {
+            AQI_INDICATOR.style.left = `0%`; 
+        }
     }
 }
-
-document.addEventListener("citySelected", async (e) => {
-    const SELECTED_CITY_NAME = e.detail.cityName;
-    try {
-        const WEATHER_DATA = await fetchWeatherData(SELECTED_CITY_NAME);
-        displayWeatherInfo(WEATHER_DATA); 
-    } catch (error) {
-        console.error(`Error fetching current weather after city selection: ${error}`);
-        displayError("Failed to update current weather!");
-    }
-});
-
-
-
-
-
-
-
 
 const SUNRISE_TIME_ELEMENT = document.querySelector("#rise-set-container .sub-rise-set-container:first-child .time");
 const SUNSET_TIME_ELEMENT = document.querySelector("#rise-set-container .sub-rise-set-container:last-child .time");
 
 function formatTime(timestamp, timezoneOffsetSeconds) {
-    const DATE = new Date((timestamp + timezoneOffsetSeconds) * 1000); 
-    const HOURS = DATE.getUTCHours(); 
+    const DATE = new Date((timestamp + timezoneOffsetSeconds) * 1000);
+    const HOURS = DATE.getUTCHours();
     const MINUTES = DATE.getUTCMinutes();
     const MERIDIEM = HOURS >= 12 ? "PM" : "AM";
-    const FORMATTED_HOURS = HOURS % 12 === 0 ? 12 : HOURS % 12; 
+    const FORMATTED_HOURS = HOURS % 12 === 0 ? 12 : HOURS % 12;
     const FORMATTED_MINUTES = MINUTES < 10 ? "0" + MINUTES : MINUTES;
     return `${FORMATTED_HOURS}:${FORMATTED_MINUTES} ${MERIDIEM}`;
 }
