@@ -11,7 +11,7 @@
 <body>
     <header class="header">
         <div class="upper-container">
-            <h1 id="app-title">COMET WEATHER</h1>
+            <h1 id="app-title">COMET WEATHER!</h1>
             <input class="search-bar" type="text" placeholder=" Search!">
             <div class="search-overlay" id="search-overlay">
                 <div class="search-overlay-content">
@@ -117,12 +117,16 @@
                         <br>
                         <div id="rise-set-container">
                             <div class="sub-rise-set-container">
-                                <img id="sun" src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Sun Icon">
+                                <img id="sun"
+                                src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                                alt="Sun Icon">
                                 <h3>Sunrise</h3>
                                 <h3 class="time">5:56 AM</h3>
                             </div>
                             <div class="sub-rise-set-container">
-                                <img id="moon" src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Moon Icon">
+                                <img id="moon" 
+                                src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                                alt="Moon Icon">
                                 <h3>Sunset</h3>
                                 <h3 class="time">7:53 AM</h3>
                             </div>
@@ -130,23 +134,41 @@
                     </div>
                     <div class="sub-box">
                         <h3 class="highlights-title">Humidity</h3>
-                        <br>
-                        c
+                        <div class="conditions-container">
+                            <img class="highlights-icons"
+                            src="icons/water_drop_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                            alt="Humidity Icon">
+                            <h3 id="humidity"></h3>
+                        </div>
                     </div>
                     <div class="sub-box">
                         <h3 class="highlights-title">Pressure</h3>
-                        <br>
-                        d
+                        <div class="conditions-container">
+                            <img class="highlights-icons"
+                            src="icons/airware_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                            alt="Pressure Icon">
+                            <h3 id="pressure"></h3>
+                        </div>
                     </div>
-                    <div class="sub-box">
-                        <h3 class="highlights-title">Visibility</h3>
-                        <br>
-                        e
-                    </div>
-                    <div class="sub-box">
-                        <h3 class="highlights-title">Feels Like</h3>
-                        <br>
-                        f
+                    <div id="pair-container">
+                        <div class="box-pair">
+                            <h3 class="highlights-title">Visibility</h3>
+                            <div class="highlights-alignment">
+                                <img class="highlights-icons"
+                                src="icons/visibility_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                                alt="Visibility Icons">
+                                <h3 id="visibility"></h3>
+                            </div>
+                        </div>
+                        <div class="box-pair">
+                            <h3 class="highlights-title">Feels Like</h3>
+                            <div class="highlights-alignment">
+                                <img class="highlights-icons"
+                                src="icons/thermostat_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                                alt="Feels Like Icon">
+                                <h3 id="feels-like"></h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
