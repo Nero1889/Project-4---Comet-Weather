@@ -144,6 +144,12 @@ const TEMP = document.querySelector(".temperature");
 const DESC = document.querySelector("#desc");
 const CITY_ELEMENT_MAIN = document.querySelector("#city"); 
 
+/* Humidity, Pressure, Visibility, Feels-Like */
+const HUMIDITY_ELEMENT = document.querySelector("#humidity");
+const PRESSURE_ELEMENT = document.querySelector("#pressure");
+const VISIBILITY_ELEMENT = document.querySelector("#visibility");
+const FEELS_LIKE_ELEMENT = document.querySelector("#feels-like");
+
 async function fetchWeatherData(city) {
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
     const RESPONSE = await fetch(API_URL);
@@ -183,8 +189,8 @@ async function displayWeatherInfo(data) {
                 if (RESPONSE.ok) {
                     const GEO_DATA = await RESPONSE.json();
                     GEO_DATA.length > 0 && GEO_DATA[0].state
-                        ? locationString = `${city}, ${GEO_DATA[0].state}`
-                        : locationString = `${city}, US`;
+                    ? locationString = `${city}, ${GEO_DATA[0].state}`
+                    : locationString = `${city}, US`;
                 }
             } catch (error) {
                 console.error(`Geocoding Error: ${error}`);
@@ -204,25 +210,54 @@ async function displayWeatherInfo(data) {
     }
 
     if (data && data.coord) {
-        const { lat, lon } = data.coord;
-        const airQualityData = await fetchAirQualityData(lat, lon);
-        displayAirQuality(airQualityData);
+        const {lat, lon} = data.coord;
+        const AIR_QUALITY_DATA = await fetchAirQualityData(lat, lon);
+        displayAirQuality(AIR_QUALITY_DATA);
     }
 
     /* Check for Sunrise and Sunset */
     if (data && data.sys && data.timezone !== undefined) {
-        const sunriseTimestamp = data.sys.sunrise;
-        const sunsetTimestamp = data.sys.sunset;
-        const timezoneOffsetSeconds = data.timezone;
+        const SUNRISE_TIME_STAMP = data.sys.sunrise;
+        const SUNSET_TIME_STAMP = data.sys.sunset;
+        const TIMEZONE_OFF_SET_SECONDS = data.timezone;
 
-        const sunriseTimeFormatted = formatTime(sunriseTimestamp, timezoneOffsetSeconds);
-        const sunsetTimeFormatted = formatTime(sunsetTimestamp, timezoneOffsetSeconds);
+        const SUNRISE_TIME_FORMATTED = formatTime(SUNRISE_TIME_STAMP, TIMEZONE_OFF_SET_SECONDS);
+        const SUNSET_TIME_FORMATTED = formatTime(SUNSET_TIME_STAMP, TIMEZONE_OFF_SET_SECONDS);
 
         if (SUNRISE_TIME_ELEMENT) {
-            SUNRISE_TIME_ELEMENT.textContent = sunriseTimeFormatted;
+            SUNRISE_TIME_ELEMENT.textContent = SUNRISE_TIME_FORMATTED;
         }
         if (SUNSET_TIME_ELEMENT) {
-            SUNSET_TIME_ELEMENT.textContent = sunsetTimeFormatted;
+            SUNSET_TIME_ELEMENT.textContent = SUNSET_TIME_FORMATTED;
+        }
+    }
+
+    if (data && data.main) {
+        if (HUMIDITY_ELEMENT) {
+            HUMIDITY_ELEMENT.textContent = `${data.main.humidity}%`;
+        }
+        if (PRESSURE_ELEMENT) {if (data && data.main) {
+            if (HUMIDITY_ELEMENT) {
+                HUMIDITY_ELEMENT.textContent = `${data.main.humidity}%`;
+            }
+            if (PRESSURE_ELEMENT) {
+                PRESSURE_ELEMENT.textContent = `${data.main.pressure} hPa`;
+            }
+            if (FEELS_LIKE_ELEMENT) {
+                FEELS_LIKE_ELEMENT.textContent = `${((data.main.feels_like - 273.15) * 9/5 + 32).toFixed(1)}°F`;
+            }
+        }
+            PRESSURE_ELEMENT.textContent = `${data.main.pressure} hPa`;
+        }
+        if (FEELS_LIKE_ELEMENT) {
+            FEELS_LIKE_ELEMENT.textContent = `${((data.main.feels_like - 273.15) * 9/5 + 32).toFixed(1)}°F`;
+        }
+    }
+
+    if (data && data.visibility !== undefined) {
+        if (VISIBILITY_ELEMENT) {
+            const VISIBILITY_MILES = data.visibility / 1609.34;
+            VISIBILITY_ELEMENT.textContent = `${VISIBILITY_MILES.toFixed(1)} mi`;
         }
     }
 }
@@ -294,4 +329,19 @@ document.addEventListener('citySelected', async (e) => {
 document.addEventListener("DOMContentLoaded", () => {
     const SEARCH_INPUT = document.querySelector(".search-bar.expanded");
     if (SEARCH_INPUT) SEARCH_INPUT.value = "Madison, Wisconsin";
+});
+
+
+
+
+
+document.addEventListener("citySelected", async (event) => {
+    const SELECTED_CITY_NAME = event.detail.cityName;
+    try {
+        const WEATHER_DATA = await fetchWeatherData(SELECTED_CITY_NAME);
+        await displayWeatherInfo(WEATHER_DATA);
+    } catch (error) {
+        console.error(`Error fetching current weather after city selection: ${error}`);
+        displayError("Failed to update current weather!");
+    }
 });
