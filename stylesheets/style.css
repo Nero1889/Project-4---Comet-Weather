@@ -96,7 +96,7 @@ body {
 }
 #weather-img {
     position: absolute;
-    margin-top:-7rem;
+    margin-top:-7.5rem;
     margin-left: 45%;
 }
 .card-titles, .temperature, #desc {
@@ -232,11 +232,8 @@ body {
     align-items: center;
     margin-top: 2.5rem;
     gap: 2.5rem;
-    /* border: 1px solid purple; */
 }
-
 #highlights-container {
-    /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -276,7 +273,6 @@ body {
     margin-top: 1rem;
     width: 100%;
 }
-
 #rise-set-container {
     display: flex;
     gap: 1rem;
@@ -302,6 +298,38 @@ body {
 .time {
     margin-top: .25rem;
 }
+.conditions-container {
+    display: flex;
+    align-items: center;
+    margin-top: .7rem;
+}
+.highlights-icons {
+    float: left;
+    height: var(--size-3xl);
+    height: var(--size-3xl);
+}
+#humidity, #pressure, #visibility, #feels-like {
+    margin-left: .5rem;
+    font-size: var(--size-base);
+    color: white;
+}
+#pair-container {
+    display: flex;
+    justify-content: space-between;
+}
+.box-pair {
+    background-color: #161617;
+    height: 3.5rem;
+    padding: 25px;
+    border-radius: 25px;
+    width: 30%;
+}
+.highlights-alignment {
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+}
+
 
 
 /* ======================================================================= */
