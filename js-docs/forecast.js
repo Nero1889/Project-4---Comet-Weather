@@ -13,8 +13,6 @@ function updateForecast(city) {
         return;
     }
 
-    const UNITS = "imperial";
-
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=${UNITS}`)
         .then(response => response.json())
         .then(data => {
@@ -39,8 +37,8 @@ function updateForecast(city) {
                 .slice(0, 5)
                 .map(dayKey => {
                     const DATE = new Date(dayKey);
-                    const DAY_NAME = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(DATE);
-                    const MONTH_SHORT = new Intl.DateTimeFormat("en-US", { month: "short" }).format(DATE);
+                    const DAY_NAME = new Intl.DateTimeFormat("en-US", {weekday: "short"}).format(DATE);
+                    const MONTH_SHORT = new Intl.DateTimeFormat("en-US", {month: "short"}).format(DATE);
                     const DAY_OF_MONTH = DATE.getDate();
                     const LOW_TEMP = Math.min(...FORECAST_DAYS[dayKey].temperatures);
                     const HIGH_TEMP = Math.max(...FORECAST_DAYS[dayKey].temperatures);
@@ -56,8 +54,8 @@ function updateForecast(city) {
                     };
                 });
 
-            NEXT_FIVE_DAYS_DATA.forEach((dayData, index) => {
-                const COLUMN = DAY_COLUMNS[index];
+            NEXT_FIVE_DAYS_DATA.forEach((dayData, i) => {
+                const COLUMN = DAY_COLUMNS[i];
                 if (COLUMN) {
                     const DAY_NAME_ELEMENT = COLUMN.querySelector(".forecast-day");
                     const ICON_ELEMENT = COLUMN.querySelector(".forecast-icon");
