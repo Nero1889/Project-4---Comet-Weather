@@ -61,16 +61,14 @@ function displayAirQuality(data) {
 
         // Update the position of the indicator
         if (AQI_INDICATOR && AIR_QUALITY_BAR) {
-            const indicatorPosition = barWidthPercentage;
-            AQI_INDICATOR.style.left = `${indicatorPosition}%`;
+            const INDICATOR_POSITION = barWidthPercentage;
+            AQI_INDICATOR.style.left = `${INDICATOR_POSITION}%`;
         }
     } else {
         if (AIR_QUALITY_ELEMENT) {
             AIR_QUALITY_ELEMENT.textContent = "No air quality data available!";
         }
-        if (AQI_INDICATOR) {
-            AQI_INDICATOR.style.left = `0%`; 
-        }
+        if (AQI_INDICATOR) AQI_INDICATOR.style.left = `0%`; 
     }
 }
 
