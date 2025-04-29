@@ -369,7 +369,7 @@ async function updateCitySpecificData(city) {
         const SUNRISE = WEATHER_DATA.sys.sunrise;
         const SUNSET = WEATHER_DATA.sys.sunset;
 
-        displayHourlyForecast(FORECAST_DATA, SUNRISE, SUNSETt, FORECAST_DATA.city.timezone);
+        displayHourlyForecast(FORECAST_DATA, SUNRISE, SUNSET, FORECAST_DATA.city.timezone);
     } catch (error) {
         console.error(`Error fetching data: ${error}`);
     }
