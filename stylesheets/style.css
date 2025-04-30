@@ -96,7 +96,7 @@ body {
 }
 #weather-img {
     position: absolute;
-    margin-top:-7.5rem;
+    margin-top: -7.5rem;
     margin-left: 45%;
 }
 .card-titles, .temperature, #desc {
@@ -390,9 +390,13 @@ body {
     height: var(--size-5xl);
     margin: 0.5rem 0;
 }
+/* Optional: hide scroll bar on some mobile browsers */
+.hourly-scroll-container::-webkit-scrollbar {
+    display: none;
+}
 .hourly-scroll-container {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 .footer {
     text-align: center;
@@ -402,13 +406,6 @@ body {
     font-size: var(--size-base);
     margin-bottom: 2.5rem;
 }
-
-
-
-
-/* ======================================================================= */
-
-
 
 /* xxs = (extra extra small) */
 @media (min-width: 320px) {
@@ -442,11 +439,36 @@ body {
 
 /* md = (medium) */
 @media (min-width: 768px) {
-    .container {
-        max-width: 768px;
+    .main {
+        display: flex;
+        height: 100vh; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 1rem; 
+        margin-top: 5.5rem;
     }
-    .section {
-        margin-top: 5rem;
+    .side-boxes {
+        width: 25rem; 
+        flex-shrink: 0;
+        margin-top: -18.2rem;
+    }
+    .main-boxes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+    #highlights {
+        width: 17rem; 
+    }
+    #todays-weather {
+        width: 16rem;
+    }
+    #weather-img {
+        margin-left: 20%;
+    }
+    #footer-title {
+        margin-top: 5.9rem;
     }
 }
 
@@ -454,6 +476,16 @@ body {
 @media (min-width: 1024px) {
     .container {
         max-width: 1024px;
+    }
+    #weather-img {
+        margin-left: 15%;
+    }
+    #highlights {
+        width: 35rem; 
+        flex-shrink: 0;
+    }
+    #todays-weather {
+        width: 30rem;
     }
 }
 
@@ -465,6 +497,17 @@ body {
     .section {
         margin-top: 5rem;
     }
+    #weather-img {
+        margin-left: 12%;
+    }
+    #highlights {
+        width: 45rem; 
+        flex-shrink: 0;
+    }
+    #todays-weather {
+        width: 100%;
+        margin-left: -25.9rem;
+    }
 }
 
 /* 2xl = (two extra large) */
@@ -474,5 +517,29 @@ body {
     }
     .section {
         margin-top: 5rem;
+    }
+    .main {
+        margin-top: 1rem;
+    }
+    #weather-img {
+        margin-left: 9%;
+    }
+    .side-boxes {
+        width: 30rem;
+        margin-top: -18.2rem;
+    }
+    #highlights {
+        width: 60rem; 
+        flex-shrink: 0;
+    }
+    #footer-title {
+        margin-top: 1rem;
+    }
+    #today-title {
+        margin-left: -18rem;
+    }
+    #todays-weather {
+        width: 100%;
+        margin-left: -12.9rem;
     }
 }
