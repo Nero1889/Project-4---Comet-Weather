@@ -356,7 +356,7 @@ body {
     align-items: center;
     width: 62%;
     margin-top: -1.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 2.5rem;
 }
 #today-title {
     margin-bottom: 1rem;
@@ -379,7 +379,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     width: 4.5rem;
-    flex: 0 0 auto;
+    flex: 0 0 auto; 
     scroll-snap-align: start;
 }
 .hourly-time, .hourly-temp {
@@ -390,12 +390,17 @@ body {
     height: var(--size-5xl);
     margin: 0.5rem 0;
 }
-.hourly-scroll-container::-webkit-scrollbar {
-    display: none;
-}
 .hourly-scroll-container {
     -ms-overflow-style: none; 
     scrollbar-width: none; 
+}
+.footer {
+    text-align: center;
+}
+#footer-title {
+    font-weight: normal;
+    font-size: var(--size-base);
+    margin-bottom: 2.5rem;
 }
 
 
