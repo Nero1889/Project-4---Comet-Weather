@@ -407,36 +407,6 @@ body {
     margin-bottom: 2.5rem;
 }
 
-/* xxs = (extra extra small) */
-@media (min-width: 320px) {
-    .container {
-        max-width: 320px;
-    }
-    .section {
-        margin-top: 5rem;
-    }
-}
-
-/* xs = (extra small) */
-@media (min-width: 475px) {
-    .container {
-        max-width: 475px;
-    }
-    .section {
-        margin-top: 5rem;
-    }
-}
-
-/* sm = (small) */
-@media (min-width: 640px) {
-    .container {
-        max-width: 640px;
-    }
-    .section {
-        margin-top: 5rem;
-    }
-}
-
 /* md = (medium) */
 @media (min-width: 768px) {
     .main {
@@ -452,6 +422,9 @@ body {
         flex-shrink: 0;
         margin-top: -18.2rem;
     }
+    #weather-img {
+        margin-left: 20%;
+    }
     .main-boxes {
         display: flex;
         flex-direction: column;
@@ -463,9 +436,6 @@ body {
     }
     #todays-weather {
         width: 16rem;
-    }
-    #weather-img {
-        margin-left: 20%;
     }
     #footer-title {
         margin-top: 5.9rem;
@@ -521,19 +491,16 @@ body {
     .main {
         margin-top: 1rem;
     }
-    #weather-img {
-        margin-left: 9%;
-    }
     .side-boxes {
         width: 30rem;
         margin-top: -18.2rem;
     }
+    #weather-img {
+        margin-left: 9%;
+    }
     #highlights {
         width: 60rem; 
         flex-shrink: 0;
-    }
-    #footer-title {
-        margin-top: 1rem;
     }
     #today-title {
         margin-left: -18rem;
@@ -541,5 +508,8 @@ body {
     #todays-weather {
         width: 100%;
         margin-left: -12.9rem;
+    }
+    #footer-title {
+        margin-top: 1rem;
     }
 }
