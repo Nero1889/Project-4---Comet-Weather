@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comet Weather</title>
+    <title>Comet Weather!</title>
     <meta name="description" content="Weather app Web Development Project HTML CSS
     JavaScript Real-Time weather information">
     <link rel="stylesheet" href="stylesheets/style.css">
@@ -12,12 +12,19 @@
     <header class="header">
         <div class="upper-container container">
             <h1 id="app-title">COMET WEATHER!</h1>
-            <input class="search-bar" type="text" placeholder=" Search!">
+            <div class="search-input-wrapper">
+                <img class="search-icon-start"
+                    src="icons/search_30dp_666666_FILL0_wght400_GRAD0_opsz24.png"
+                    alt="Search Icon">
+                <input class="search-bar desktop-search-bar" type="text" placeholder="Search!">
+            </div>
+            <div id="suggestions-dropdown" class="suggestions-dropdown">
+            </div>
             <div class="search-overlay" id="search-overlay">
                 <div class="search-overlay-content">
                     <form id="user-input">
                         <input class="search-bar expanded" type="text"
-                        placeholder="Search!">
+                        placeholder="Search!!!">
                     </form>
                     <div id="suggestions-container">
                     </div>
@@ -63,7 +70,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="forecast">
                 <h3 class="card-titles" id="forecast-title">5 Day Forecast</h3>
                 <div class="forecast-columns">
@@ -98,80 +104,82 @@
         <div class="main-boxes">
             <div id="highlights" class="box">
                 <h3 class="card-titles" id="highlight-title">Highlights</h3>
+            
                 <div id="highlights-container">
-                    <div class="sub-box">
+            
+                    <!-- Air Quality Index - full width -->
+                    <div class="sub-box full-width" id="a1">
                         <h3 class="highlights-title">Air Quality Index</h3>
                         <div id="air-quality-container">
-                            <img id="air-icon"
-                            src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                            alt="Air Icon">
+                            <img id="air-icon" src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Air Icon">
                             <h3 id="air-quality">(Air quality here)</h3>
                         </div>
                         <div id="aqi-container" style="position: relative;">
                             <div id="air-quality-bar"></div>
-                            <div id="aqi-indicator"></div> 
+                            <div id="aqi-indicator"></div>
                         </div>
                     </div>
-                    <div id="ab">
-                        <div class="sub-box" id="a">
+            
+                    <!-- Sunrise/Sunset and Humidity - side by side -->
+                    <div class="row-pair">
+                        <!-- Sunrise/Sunset -->
+                        <div class="sub-box half-width" id="xy">
                             <h3 class="highlights-title">Sunrise and Sunset</h3>
                             <br>
                             <div id="rise-set-container">
                                 <div class="sub-rise-set-container">
-                                    <img id="sun"
-                                    src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                    alt="Sun Icon">
+                                    <img id="sun" src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Sun Icon">
                                     <h3>Sunrise</h3>
                                     <h3 class="time">5:56 AM</h3>
                                 </div>
                                 <div class="sub-rise-set-container">
-                                    <img id="moon" 
-                                    src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                    alt="Moon Icon">
+                                    <img id="moon" src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Moon Icon">
                                     <h3>Sunset</h3>
                                     <h3 class="time">7:53 AM</h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-box" id="b">
+            
+                        <!-- Humidity -->
+                        <div class="sub-box half-width">
                             <h3 class="highlights-title">Humidity</h3>
-                            <div class="conditions-container">
-                                <img class="highlights-icons"
-                                src="icons/water_drop_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                alt="Humidity Icon">
+                            <div class="conditions-container" id="humi">
+                                <img class="highlights-icons" src="icons/water_drop_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Humidity Icon">
                                 <h3 id="humidity"></h3>
                             </div>
                         </div>
-                        <div class="sub-box">
+                    </div>
+            
+                    <!-- Pressure, Visibility, Feels Like - 3 columns -->
+                    <div class="trio">
+                        <!-- Pressure -->
+                        <div class="sub-box third-width" id="pres">
                             <h3 class="highlights-title">Pressure</h3>
                             <div class="conditions-container">
-                                <img class="highlights-icons"
-                                src="icons/airware_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                alt="Pressure Icon">
+                                <img class="highlights-icons" src="icons/airware_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Pressure Icon">
                                 <h3 id="pressure"></h3>
                             </div>
                         </div>
-                        <div id="pair-container">
-                            <div class="box-pair">
-                                <h3 class="highlights-title">Visibility</h3>
-                                <div class="highlights-alignment">
-                                    <img class="highlights-icons"
-                                    src="icons/visibility_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                    alt="Visibility Icons">
-                                    <h3 id="visibility"></h3>
-                                </div>
+            
+                        <!-- Visibility -->
+                        <div class="sub-box third-width">
+                            <h3 class="highlights-title">Visibility</h3>
+                            <div class="highlights-alignment">
+                                <img class="highlights-icons" src="icons/visibility_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Visibility Icon">
+                                <h3 id="visibility"></h3>
                             </div>
-                            <div class="box-pair">
-                                <h3 class="highlights-title">Feels Like</h3>
-                                <div class="highlights-alignment">
-                                    <img class="highlights-icons"
-                                    src="icons/thermostat_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
-                                    alt="Feels Like Icon">
-                                    <h3 id="feels-like"></h3>
-                                </div>
+                        </div>
+            
+                        <!-- Feels Like -->
+                        <div class="sub-box third-width">
+                            <h3 class="highlights-title">Feels Like</h3>
+                            <div class="highlights-alignment">
+                                <img class="highlights-icons" src="icons/thermostat_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Feels Like Icon">
+                                <h3 id="feels-like"></h3>
                             </div>
                         </div>
                     </div>
+            
                 </div>
             </div>
             <div id="todays-weather">
@@ -229,14 +237,16 @@
         </div>
     </main>
     <footer class="footer">
-        <h1 id="footer-title">Raul Luna - 2025</h1>
         <div id="footer-api-container">
-            <a href="https://github.com/Nero1889?" title="My GitHub!" target="_blank">
-                <img id="github-logo" src="images/github.png" alt="GitHub Logo">
-            </a>
-            <a href="https://openweathermap.org/" title="OpenWeatherMap" target="_blank">
-                <img id="api-logo" src="images/openWeatherMap.png" alt="Open Weather Map Logo">
-            </a>
+            <h1 id="footer-title">Raul Luna - 2025</h1>
+            <div id="x">
+                <a href="https://github.com/Nero1889?" title="My GitHub!" target="_blank">
+                    <img id="github-logo" src="images/github.png" alt="GitHub Logo">
+                </a>
+                <a href="https://openweathermap.org/" title="OpenWeatherMap" target="_blank">
+                    <img id="api-logo" src="images/openWeatherMap.png" alt="Open Weather Map Logo">
+                </a>
+            </div>
         </div>
         <script src="js-docs/main.js"></script>
         <script src="js-docs/search-bar.js"></script>
