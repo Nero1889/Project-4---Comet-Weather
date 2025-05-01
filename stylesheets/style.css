@@ -75,9 +75,6 @@ body {
     background-color: #131214;
     margin-right: .5rem;
 }
-#desk-location-btn {
-    border: 1px solid purple;
-}
 #location-icon {
     background-color: #b71234;
 }
@@ -249,7 +246,7 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     margin-top: .5rem;
-}
+} 
 .sub-box {
     background-color: #161617;
     border-radius: 25px;
@@ -334,6 +331,15 @@ body {
     font-size: var(--size-base);
     color: white;
 }
+#highlights-pair {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+#pair {
+    width: 35%;
+    margin-top: 0;
+}
 #pair-container {
     display: flex;
     justify-content: space-between;
@@ -345,7 +351,7 @@ body {
     border-radius: 25px;
     width: 31%;
 }
-.box-pair #visibility, #feels-like {
+#visibility, #feels-like {
     font-size: var(--size-sm);
 }
 .highlights-alignment {
@@ -382,7 +388,7 @@ body {
     width: 62%;
     margin-top: -1.5rem;
     margin-bottom: 2.5rem;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }
 #today-title {
     margin-bottom: 1rem;
@@ -472,6 +478,7 @@ body {
         justify-content: center; 
         gap: 1rem; 
         margin-top: 5.5rem;
+        border: 1px solid red;
     }
     .side-boxes {
         width: 25rem; 
@@ -481,21 +488,41 @@ body {
     #weather-img {
         margin-left: 20%;
     }
+    #highlights {
+        border: 1px solid blue;
+        margin-top: 8rem;
+    }
+    #highlights-container {
+        width: 100%;
+    }
     .main-boxes {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        border: 1px solid purple;
+    }
+    .sub-box {
         width: auto;
     }
-    #highlights {
-        width: 17rem;
-        margin-top: 8.5rem;
+    #pair {
+        border: 1px solid red;
     }
     #todays-weather {
-        width: 16rem;
+        width: 15.5rem;
     }
     #footer-title {
         margin-top: 5.9rem;
+    }
+    #footer-api-container {
+        height: 5.5rem;
+    }
+    #footer-title {
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+    }
+    #x {
+        margin-top: -.2rem;
     }
 }
 
@@ -508,7 +535,6 @@ body {
         margin-left: 15%;
     }
     #highlights {
-        width: 35rem;
         flex-shrink: 0;
     }
     .box-pair {
@@ -620,8 +646,8 @@ body {
         width: 11rem;
     }
     #highlights {
-        width: 45rem;
         flex-shrink: 0;
+        margin-top: -10.7rem;
     }
     .box-pair {
         width: 19.2rem;
@@ -636,6 +662,18 @@ body {
     .side-boxes {
         width: 30rem;
         margin-top: -17rem;
+    }
+    .trio {
+        border: 1px solid orangered;
+    }
+    #highlights-pair {
+        border: 2px solid yellow;
+        display: flex;
+        gap: 2rem;
+    }
+    #pair {
+        border: 1px solid red;
+        width: 90%;
     }
     #highlight-title {
         font-size: var(--size-xl);
@@ -687,9 +725,11 @@ body {
     #highlights-container {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.7rem;
     }
-    
+    .sub-box {
+        padding: 20px;
+    }
     .row-pair {
         flex-direction: row;
         justify-content: space-between;
@@ -737,7 +777,7 @@ body {
     #highlights {
         width: 60rem; 
         flex-shrink: 0;
-        margin-top: -15rem;
+        margin-top: -12rem;
     }
     .box-pair {
         width: 26.7rem;
@@ -752,8 +792,7 @@ body {
     #footer-title {
         margin-top: 1rem;
     }
+    .main-boxes {
+        width: auto;
+    }
 }
-
-/* .upper-container {
-    border: 1px solid #b71234;
-} */
