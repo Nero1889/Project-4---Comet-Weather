@@ -394,6 +394,17 @@ body {
     margin-bottom: 1rem;
     text-align: center;
 }
+#todays-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 62%;
+    margin-bottom: 2.5rem;
+}
+#today-title {
+    margin-bottom: 1rem;
+    text-align: center;
+}
 .hourly-scroll-container {
     display: flex;
     flex-direction: row;
@@ -469,6 +480,8 @@ body {
     padding: 5px;
 }
 
+
+
 /* md = (medium) */
 @media (min-width: 768px) {
     .main {
@@ -477,7 +490,7 @@ body {
         justify-content: center;
         align-items: start;
         gap: 1rem; 
-        margin-top: 3.5rem;
+        margin-top: 2rem;
     }
     .side-boxes {
         width: 25rem; 
@@ -522,12 +535,12 @@ body {
     #highlights {
         flex-shrink: 0;
     }
+    .main {
+        margin-top: 3.5rem;
+    }
     .box-pair {
         width: 14rem;
     }
-    /* #todays-weather {
-        width: 30rem;
-    } */
     #mobile-btn-container {
         display: none;
     }
@@ -552,12 +565,6 @@ body {
         border: none;
         border-radius: 50px;
         color: white;
-    }
-    .upper-container {
-        display: flex;
-        justify-content: space-between; /* Distribute space between items */
-        align-items: center; /* Vertically align items if needed */
-        margin-bottom: 2rem;
     }
     #app-title {
         width: auto;
@@ -641,6 +648,10 @@ body {
     }
     #todays-weather {
         width: 60%;
+        margin-bottom: 2.5rem;
+    }
+    .hourly-weather {
+        margin-top: 1.5rem;
     }
     .box, #forecast {
         padding: 35px;
@@ -770,6 +781,9 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    #today-title {
+        margin-left: -3.7rem;
     }
     .main-boxes {
         width: auto;
