@@ -44,12 +44,10 @@ function displayHourlyForecast(forecastData, sunriseTimestamp, sunsetTimestamp, 
             const FORMATTED_TIME = `${HOURS12}:${MINUTES.toString().padStart(2, "0")} ${MERIDIEM}`;
             let iconCode = item.weather[0].icon.slice(0, 2);
 
-            if (isDaytime(FORECAST_LOCAL_TIMESTAMP, sunriseTimestamp, sunsetTimestamp, timezoneOffsetInSeconds)) {
-                iconCode += "d.png";
-            } else {
-                iconCode += "n.png";
-            }
-
+            isDaytime(FORECAST_LOCAL_TIMESTAMP, sunriseTimestamp, sunsetTimestamp, timezoneOffsetInSeconds)
+            ? iconCode += "d.png"
+            : iconCode += "n.png";
+            
             const TEMPERATURE = Math.round(item.main.temp);
 
             if (TIME_ELEMENT) TIME_ELEMENT.textContent = FORMATTED_TIME;
