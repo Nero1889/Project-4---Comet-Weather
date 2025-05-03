@@ -139,7 +139,7 @@ const API_KEY = "13f4bea4ed2b2e865bd47a961b9335a0";
 const UNITS = "imperial";
 const UPPER_CONTAINER = document.querySelector(".upper-container");
 const USER_INPUT = document.querySelector("#user-input");
-const SEARCH_BAR = document.querySelector(".search-bar.expanded");
+const SEARCH_BAR = document.querySelector(".search-bar");
 const BOX = document.querySelector(".box");
 const TEMP = document.querySelector(".temperature");
 const DESC = document.querySelector("#desc");
@@ -310,7 +310,6 @@ document.addEventListener("citySelected", async (event) => {
     }
 });
 
-
 /* Default City (Madison, WI) */
 fetchWeatherData("Madison, Wisconsin").then(displayWeatherInfo).catch(error => {
     console.error(`Error fetching initial weather data: ${error}`);
@@ -332,10 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (SEARCH_INPUT) SEARCH_INPUT.value = "Madison, Wisconsin";
 });
 
-
-
-
-
 document.addEventListener("citySelected", async (e) => {
     const SELECTED_CITY_NAME = e.detail.cityName;
     try {
@@ -346,19 +341,6 @@ document.addEventListener("citySelected", async (e) => {
         displayError("Failed to update current weather!");
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 async function updateCitySpecificData(city) {
     try {
