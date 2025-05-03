@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comet Weather!</title>
     <meta name="description" content="Weather app Web Development Project HTML CSS
-    JavaScript Real-Time weather information">
+    JavaScript Real-Time information climate forehast humidity pressure air quality
+    sunrise sunset">
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
@@ -14,32 +15,29 @@
             <h1 id="app-title">COMET WEATHER!</h1>
             <div class="search-input-wrapper">
                 <img class="search-icon-start"
-                    src="icons/search_30dp_666666_FILL0_wght400_GRAD0_opsz24.png"
-                    alt="Search Icon">
-                <input class="search-bar desktop-search-bar" type="text" placeholder="Search!">
-            </div>
-            <div id="suggestions-dropdown" class="suggestions-dropdown">
+                src="icons/searchIcon.png"
+                alt="Search Icon">
+                <input class="search-bar desktop-search-bar" type="text"
+                placeholder="Search!">
+                <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
             </div>
             <div class="search-overlay" id="search-overlay">
                 <div class="search-overlay-content">
                     <form id="user-input">
                         <input class="search-bar expanded" type="text"
-                        placeholder="Search!!!">
+                        placeholder="(Mobile Beta) Search!">
                     </form>
                     <div id="suggestions-container">
                     </div>
-                    <img id="back-btn"
-                    src="icons/arrow_back_30dp_666666_FILL0_wght400_GRAD0_opsz24.png"
-                    alt="Arrow Back">
+                    <img id="back-btn" src="icons/arrowBackIcon.png" alt="Arrow Back">
                     <div class="vertical-bar"></div>
                 </div>
             </div>
             <div id="mobile-btn-container">
                 <img id="search-icon"
-                src="icons/search_30dp_666666_FILL0_wght400_GRAD0_opsz24.png"
+                src="icons/searchIcon.png"
                 alt="Search Icon" title="Search!">
-                <img id="location-icon"
-                src="icons/location_on_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                <img id="location-icon" src="icons/locationIconWhite.png"
                 alt="Location Icon" title="Use Exact Location">
             </div>
             <button id="current-location-btn">Current Location</button>
@@ -57,14 +55,12 @@
                 </div>
                 <div id="icon-container">
                     <div id="icon-1">
-                        <img class="icon"
-                        src="icons/calendar_today_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                        <img class="icon" src="icons/calendarIcon.png"
                         alt="Calendar Icon">
                         <p id="date"></p>
                     </div>
                     <div id="icon-2">
-                        <img class="icon"
-                        src="icons/location_on_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+                        <img class="icon" src="icons/locationIconWhite.png"
                         alt="Location Icon">
                         <p id="city"></p>
                     </div>
@@ -103,12 +99,16 @@
             <footer class="footer one">
                 <div id="footer-api-container">
                     <h1 id="footer-title">Raul Luna - 2025</h1>
-                    <div id="x">
-                        <a href="https://github.com/Nero1889?" title="My GitHub!" target="_blank">
-                            <img id="github-logo" src="images/github.png" alt="GitHub Logo">
+                    <div id="logo-container">
+                        <a href="https://github.com/Nero1889?" title="My GitHub!"
+                        target="_blank">
+                            <img id="github-logo" src="images/github.png"
+                            alt="GitHub Logo">
                         </a>
-                        <a href="https://openweathermap.org/" title="OpenWeatherMap" target="_blank">
-                            <img id="api-logo" src="images/openWeatherMap.png" alt="Open Weather Map Logo">
+                        <a href="https://openweathermap.org/" title="OpenWeatherMap"
+                        target="_blank">
+                            <img id="api-logo" src="images/openWeatherMap.png"
+                            alt="Open Weather Map Logo">
                         </a>
                     </div>
                 </div>
@@ -117,14 +117,13 @@
         <div class="main-boxes">
             <div id="highlights" class="box">
                 <h3 class="card-titles" id="highlight-title">Highlights</h3>
-            
                 <div id="highlights-container">
-            
-                    <!-- Air Quality Index - full width -->
-                    <div class="sub-box full-width" id="a1">
+                    <div class="sub-box full-width">
                         <h3 class="highlights-title">Air Quality Index</h3>
                         <div id="air-quality-container">
-                            <img id="air-icon" src="icons/air_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Air Icon">
+                            <img id="air-icon"
+                            src="icons/airIcon.png"
+                            alt="Air Icon">
                             <h3 id="air-quality">(Air quality here)</h3>
                         </div>
                         <div id="aqi-container" style="position: relative;">
@@ -132,69 +131,62 @@
                             <div id="aqi-indicator"></div>
                         </div>
                     </div>
-            
-                    <!-- Sunrise/Sunset and Humidity - side by side -->
                     <div class="row-pair">
-                        <!-- Sunrise/Sunset -->
-                        <div class="sub-box half-width" id="xy">
+                        <div class="sub-box half-width" id="just-go-up-plz-im-tired">
                             <h3 class="highlights-title">Sunrise and Sunset</h3>
                             <br>
                             <div id="rise-set-container">
                                 <div class="sub-rise-set-container">
-                                    <img id="sun" src="icons/wb_sunny_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Sun Icon">
+                                    <img id="sun"
+                                    src="icons/sunIcon.png" alt="Sun Icon">
                                     <h3>Sunrise</h3>
                                     <h3 class="time">5:56 AM</h3>
                                 </div>
                                 <div class="sub-rise-set-container">
-                                    <img id="moon" src="icons/dark_mode_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Moon Icon">
+                                    <img id="moon"
+                                    src="icons/moonIcon.png" alt="Moon Icon">
                                     <h3>Sunset</h3>
                                     <h3 class="time">7:53 AM</h3>
                                 </div>
                             </div>
                         </div>
-            
-                        <!-- Humidity -->
                         <div class="sub-box half-width">
                             <h3 class="highlights-title">Humidity</h3>
                             <div class="conditions-container" id="humi">
-                                <img class="highlights-icons" src="icons/water_drop_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Humidity Icon">
+                                <img class="highlights-icons"
+                                src="icons/humidityIcon.png" alt="Humidity Icon">
                                 <h3 id="humidity"></h3>
                             </div>
                         </div>
                     </div>
-            
-                    <!-- Pressure, Visibility, Feels Like - 3 columns -->
                     <div class="trio">
-                        <!-- Pressure -->
                         <div class="sub-box third-width" id="pres">
                             <h3 class="highlights-title">Pressure</h3>
                             <div class="conditions-container">
-                                <img class="highlights-icons" src="icons/airware_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Pressure Icon">
+                                <img class="highlights-icons"
+                                src="icons/pressureIcon.png" alt="Pressure Icon">
                                 <h3 id="pressure"></h3>
                             </div>
                         </div>
-            
-                        <!-- Visibility -->
                         <div id="highlights-pair">
                             <div class="sub-box third-width" id="pair">
                                 <h3 class="highlights-title">Visibility</h3>
                                 <div class="highlights-alignment">
-                                    <img class="highlights-icons" src="icons/visibility_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Visibility Icon">
+                                    <img class="highlights-icons"
+                                    src="icons/visibilityIcon.png" alt="Visibility Icon">
                                     <h3 id="visibility"></h3>
                                 </div>
                             </div>
-                
-                            <!-- Feels Like -->
                             <div class="sub-box third-width" id="pair">
                                 <h3 class="highlights-title">Feels Like</h3>
                                 <div class="highlights-alignment">
-                                    <img class="highlights-icons" src="icons/thermostat_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Feels Like Icon">
+                                    <img class="highlights-icons" 
+                                    src="icons/feelsLikeIcon.png" alt="Feels Like Icon">
                                     <h3 id="feels-like"></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-            
                 </div>
             </div>
             <div id="todays-weather">
@@ -204,49 +196,50 @@
                 <div class="hourly-scroll-container">
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/01d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/01d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/02d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/02d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/03d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/03d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/04d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/04d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/09d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/09d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/02d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/02d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/03d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/03d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
-    
                     <div class="hourly-weather">
                         <h3 class="hourly-time"></h3>
-                        <img class="hourly-icon" src="images/04d.png" alt="Hourly Weather">
+                        <img class="hourly-icon" src="images/04d.png"
+                        alt="Hourly Weather">
                         <h3 class="hourly-temp"></h3>
                     </div>
                 </div>
@@ -256,12 +249,16 @@
     <footer class="footer two">
         <div id="footer-api-container">
             <h1 id="footer-title">Raul Luna - 2025</h1>
-            <div id="x">
-                <a href="https://github.com/Nero1889?" title="My GitHub!" target="_blank">
-                    <img id="github-logo" src="images/github.png" alt="GitHub Logo">
+            <div id="logo-container">
+                <a href="https://github.com/Nero1889?" title="My GitHub!"
+                target="_blank">
+                    <img id="github-logo" src="images/github.png"
+                    alt="GitHub Logo">
                 </a>
-                <a href="https://openweathermap.org/" title="OpenWeatherMap" target="_blank">
-                    <img id="api-logo" src="images/openWeatherMap.png" alt="Open Weather Map Logo">
+                <a href="https://openweathermap.org/" title="OpenWeatherMap"
+                target="_blank">
+                    <img id="api-logo" src="images/openWeatherMap.png"
+                    alt="Open Weather Map Logo">
                 </a>
             </div>
         </div>
