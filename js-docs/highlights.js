@@ -59,7 +59,6 @@ function displayAirQuality(data) {
             AIR_QUALITY_ELEMENT.textContent = `${airQualityText} (AQI: ${aqi_0_to_500})`;
         }
 
-        // Update the position of the indicator
         if (AQI_INDICATOR && AIR_QUALITY_BAR) {
             const INDICATOR_POSITION = barWidthPercentage;
             AQI_INDICATOR.style.left = `${INDICATOR_POSITION}%`;
