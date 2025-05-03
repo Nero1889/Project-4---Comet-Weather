@@ -269,7 +269,6 @@ body {
     font-weight: normal;
     font-size: var(--size-base);
 }
-
 #air-quality-container {
     display: flex;
     align-items: center;
@@ -448,10 +447,8 @@ body {
 .one {
     display: none;
 }
-#footer-title, #footer-credit {
-    font-weight: normal;
-}
 #footer-title {
+    font-weight: normal;
     margin-bottom: 1rem;
     font-size: var(--size-base);
 }
@@ -462,7 +459,7 @@ body {
     padding: 10px;
     border-radius: 25px;
 }
-#x {
+#logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -479,8 +476,54 @@ body {
     border-radius: 50px;
     padding: 5px;
 }
-
-
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 28.8rem;
+    background-color: var(--box-bg);
+    color: white;
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 25px 25px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: none;
+    overflow: hidden;
+}
+.suggestion-item {
+    padding: 0;
+}
+.suggestion-item:hover {
+    background-color: #2e2e2e;
+}
+.suggestion-item .location-icon {
+    width: 1.2rem; 
+    height: 1.2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    margin-top: 0rem;
+}
+.suggestion-item .city-name {
+    color: white;
+    font-weight: normal; 
+    font-size: var(--size-base);
+    margin-left: .5rem;
+}
+.suggestion-item .location-secondary {
+    color: grey;
+    font-size: var(--size-sm); 
+    margin-top: .25rem;
+    margin-left: .5rem;
+}
+.suggestion-item .text-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    margin: .7rem;
+}
 
 /* md = (medium) */
 @media (min-width: 768px) {
@@ -504,9 +547,6 @@ body {
         width: 100%;
     }
     .main-boxes {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         width: 90%;
         margin-top: 0;
     }
@@ -522,7 +562,7 @@ body {
     #todays-weather {
         width: 15.5rem;
     }
-    #x {
+    #logo-container {
         margin-top: -.2rem;
     }
 }
@@ -547,15 +587,17 @@ body {
     .search-bar, #current-location-btn {
         display: block;
     }
-    
     .search-bar {
         padding: 15px;
         width: 25rem;
         font-size: var(--size-base);
         background-color: var(--box-bg);
         border: none;
-        border-radius: 50px;
+        border-radius: 25px; 
         color: white;
+    }
+    .search-bar.suggestions-active {
+        border-radius: 25px 25px 0 0; 
     }
     #current-location-btn {
         padding: 15px;
@@ -572,54 +614,28 @@ body {
     #search-icon, #location-icon {
         display: none;
     }
-
-
-
     .search-input-wrapper {
-        position: relative; /* Make the wrapper a positioning context */
-        margin: 0 auto; /* Center the wrapper */
-        width: 25rem; /* Match the width of the input */
+        position: relative; 
+        margin: 0 auto; 
+        width: 25rem; 
     }
-
     .search-input-wrapper > input.search-bar {
-        width: 100%; /* Make the input fill the wrapper */
-        padding-left: 3rem; /* Adjust for icon width and spacing */
+        width: 100%;
+        padding-left: 3rem;
     }
-
     .search-input-wrapper > img.search-icon-start {
         position: absolute;
-        left: 1rem; /* Adjust horizontal position */
+        left: 1rem; 
         top: 50%;
-        transform: translateY(-50%); /* Vertically center the icon */
-        width: 1.2rem; /* Adjust icon size */
+        transform: translateY(-50%); 
+        width: 1.2rem; 
         height: auto;
     }
     .search-icon-start {
         display: block;
     }
-    .suggestions-dropdown {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: red; /* Make it very visible */
-        z-index: 1000;
-        display: block !important; /* Force it to show */
-    }
-
-    .suggestions-dropdown ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .suggestions-dropdown li {
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-        color: white;
-    }
-
-    .suggestions-dropdown li:hover {
-        background-color: #555;
+    #rise-set-container {
+        gap: 3rem;
     }
 }
 
@@ -696,8 +712,6 @@ body {
     .box-pair #visibility, #feels-like {
         font-size: var(--size-lg);
     }
-
-
     #forecast-title {
         font-size: var(--size-xl);
     }
@@ -707,10 +721,7 @@ body {
     .forecast-day {
         width: 7.5rem;
     }
-
-    /* ====== Boxes ====== */
-
-    #xy {
+    #just-go-up-plz-im-tired {
         margin-top: 0rem;
     }
     #humi {
