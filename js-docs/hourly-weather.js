@@ -58,7 +58,6 @@ function displayHourlyForecast(forecastData, sunriseTimestamp, sunsetTimestamp, 
             displayedForecasts++;
         }
     });
-
     console.log(forecastData);
 }
 
@@ -74,7 +73,3 @@ async function updateHourlyForecastForCity(city) {
 }
 
 updateHourlyForecastForCity("Madison");
-
-document.addEventListener("citySelected", (e) => {
-    const SELECTED_CITY_NAME = e.detail.cityName;
-});
