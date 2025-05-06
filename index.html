@@ -14,18 +14,19 @@
         <div class="upper-container container">
             <h1 id="app-title">COMET WEATHER!</h1>
             <div class="search-input-wrapper">
-                <img class="search-icon-start"
-                src="icons/searchIcon.png"
+                <img class="search-icon-start" src="icons/searchIcon.png"
                 alt="Search Icon">
+                <!-- Desktop Search Bar -->
                 <input class="search-bar desktop-search-bar" type="text"
                 placeholder="Search!">
                 <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
             </div>
-            <div class="search-overlay" id="search-overlay">
+            <div class="search-overlay">
                 <div class="search-overlay-content">
                     <form id="user-input">
+                        <!-- Mobile Search Bar -->
                         <input class="search-bar expanded" type="text"
-                        placeholder="(Mobile Beta) Search!">
+                        placeholder="Search!">
                     </form>
                     <div id="suggestions-container">
                     </div>
@@ -40,7 +41,12 @@
                 <img id="location-icon" src="icons/locationIconWhite.png"
                 alt="Location Icon" title="Use Exact Location">
             </div>
-            <button id="current-location-btn">Current Location</button>
+            <button id="current-location-btn" class="location">
+                <span class="icon">
+                    <img src="icons/locationIconWhite.png" alt="Location Icon">
+                </span>
+                <span class="text">Current Location</span>
+            </button>
         </div>
     </header>
     <main class="main">
