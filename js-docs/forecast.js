@@ -28,8 +28,7 @@ function updateForecast(city) {
                         weatherIcons: []
                     };
                 }
-                FORECAST_DAYS[DATE_KEY].temperatures.push(item.main.temp_min);
-                FORECAST_DAYS[DATE_KEY].temperatures.push(item.main.temp_max);
+                FORECAST_DAYS[DATE_KEY].temperatures.push(item.main.temp); 
                 FORECAST_DAYS[DATE_KEY].weatherIcons.push(item.weather[0].icon);
             });
 
@@ -37,8 +36,8 @@ function updateForecast(city) {
                 .slice(0, 5)
                 .map(dayKey => {
                     const DATE = new Date(dayKey);
-                    const DAY_NAME = new Intl.DateTimeFormat("en-US", {weekday: "short"}).format(DATE);
-                    const MONTH_SHORT = new Intl.DateTimeFormat("en-US", {month: "short"}).format(DATE);
+                    const DAY_NAME = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(DATE);
+                    const MONTH_SHORT = new Intl.DateTimeFormat("en-US", { month: "short" }).format(DATE);
                     const DAY_OF_MONTH = DATE.getDate();
                     const LOW_TEMP = Math.min(...FORECAST_DAYS[dayKey].temperatures);
                     const HIGH_TEMP = Math.max(...FORECAST_DAYS[dayKey].temperatures);
@@ -96,5 +95,10 @@ function getMostFrequent(arr) {
     }
     return mostFrequentElement;
 }
+
+document.addEventListener("citySelected", (e) => {
+    const SELECTED_CITY = e.detail;
+    updateForecast(SELECTED_CITY.name); 
+});
 
 updateForecast("Madison");
