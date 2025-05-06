@@ -143,7 +143,7 @@ const SEARCH_BAR = document.querySelector(".search-bar");
 const BOX = document.querySelector(".box");
 const TEMP = document.querySelector(".temperature");
 const DESC = document.querySelector("#desc");
-const CITY_ELEMENT_MAIN = document.querySelector("#city"); 
+const CITY_ELEMENT_MAIN = document.querySelector("#city");
 
 /* Humidity, Pressure, Visibility, Feels-Like */
 const HUMIDITY_ELEMENT = document.querySelector("#humidity");
@@ -151,8 +151,8 @@ const PRESSURE_ELEMENT = document.querySelector("#pressure");
 const VISIBILITY_ELEMENT = document.querySelector("#visibility");
 const FEELS_LIKE_ELEMENT = document.querySelector("#feels-like");
 
-async function fetchWeatherData(city) {
-    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+async function fetchWeatherData(cityQuery) {
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityQuery}&appid=${API_KEY}`;
     const RESPONSE = await fetch(API_URL);
 
     if (!RESPONSE.ok) throw new Error("Could not fetch weather data!");
@@ -288,26 +288,22 @@ function getWeatherImg(weatherID, iconCode) {
     return "01d.png";
 }
 
-function displayError(message) {
-    const ERROR_DISPLAY = document.createElement("p");
-    ERROR_DISPLAY.textContent = message;
-    ERROR_DISPLAY.classList.add(".error-display"); // return to later!
-
+function displayError() {
     BOX.textContent = "";
     BOX.style.display = "flex";
     BOX.appendChild(ERROR_DISPLAY);
 }
 
 document.addEventListener("citySelected", async (e) => {
-    const SELECTED_CITY_NAME = e.detail.cityName;
+    const SELECTED_CITY = e.detail;
     try {
-        const WEATHER_DATA = await fetchWeatherData(SELECTED_CITY_NAME);
+        const WEATHER_DATA = await fetchWeatherData(`${SELECTED_CITY.name},${SELECTED_CITY.country}`);
         displayWeatherInfo(WEATHER_DATA);
     } catch (error) {
         console.error(`Error fetching current weather after city selection: ${error}`);
         displayError("Failed to update current weather! ):");
     }
-    updateCitySpecificData(SELECTED_CITY_NAME);
+    updateCitySpecificData(`${SELECTED_CITY.name},${SELECTED_CITY.country}`); 
 });
 
 updateCitySpecificData("Madison");
@@ -325,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function updateCitySpecificData(city) {
     try {
         const WEATHER_DATA = await fetchWeatherData(city);
-        displayWeatherInfo(WEATHER_DATA); 
+        displayWeatherInfo(WEATHER_DATA);
 
         const FORECAST_DATA = await fetchHourlyForecast(city);
         const SUNRISE = WEATHER_DATA.sys.sunrise;
@@ -340,12 +336,12 @@ async function updateCitySpecificData(city) {
 /* Check Weather in Users Current Location */
 const CURRENT_LOCATION_BTN = document.querySelector("#current-location-btn").onclick = async () => {
     try {
-        const LOCATION = await maps_local.query_places(query=MY_LOCATION);
+        const LOCATION = await maps_local.query_places(query="MY_LOCATION");
         if (typeof LOCATION !== "string" && LOCATION.places && LOCATION.places.length > 0) {
-            const CITY = LOCATION.places[0].name; // Or use coordinates if more precise
-            await updateCitySpecificData(CITY); // Assuming this function handles weather and forecast updates
+            const CITY = LOCATION.places[0].name; 
+            await updateCitySpecificData(CITY); 
         } else {
-            alert("Could not determine your current location.");
+            alert("Could not determine your current location!");
         }
     } catch (error) {
         console.error(`Error getting current location: ${error}`);
