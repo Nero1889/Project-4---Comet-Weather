@@ -92,7 +92,7 @@ function fetchSuggestions(query, container, inputElement) {
         return;
     }
 
-    const SUGGESTION_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`;
+    const SUGGESTION_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`;
 
     fetch(SUGGESTION_API_URL)
         .then(response => {
