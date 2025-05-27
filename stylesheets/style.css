@@ -9,6 +9,7 @@
     /* Color Theme */
     --txt: #737373;
     --box-bg: #1d1c1f;
+    --sub-box: #161617;
 
     /* Sizes */
     --size-xss: 0.5rem;
@@ -31,7 +32,6 @@ html {
     scroll-behavior: smooth;
 }
 body {
-    /* font-family: "Roboto", Arial, Helvetica, sans-serif; */
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;   
@@ -255,7 +255,7 @@ button, input {
     margin-top: .5rem;
 } 
 .sub-box {
-    background-color: #161617;
+    background-color: var(--sub-box);
     border-radius: 25px;
     padding: 15px;
 }
@@ -351,7 +351,7 @@ button, input {
     justify-content: space-between;
 }
 .box-pair {
-    background-color: #161617;
+    background-color: var(--sub-box);
     height: 3.5rem;
     padding: 20px;
     border-radius: 25px;
@@ -719,9 +719,6 @@ button, input {
     }
     .forecast-day, .forecast-temp {
         font-size: var(--size-lg);
-    }
-    .forecast-day {
-        width: 7.5rem;
     }
     #just-go-up-plz-im-tired {
         margin-top: 0rem;
