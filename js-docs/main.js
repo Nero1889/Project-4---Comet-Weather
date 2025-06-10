@@ -24,7 +24,7 @@ const BG_IMAGES = [
     "images/stockholm.jpg",
     "images/berlin.jpg",
     "images/paris.jpeg",
-    "images/rome.png",
+    "images/rome.jpg",
     "images/moscow.jpg",
     "images/istanbul.png",
 
