@@ -25,3 +25,11 @@ And yes! It's fully responsive!
 - Sunrise and sunset times are displayed for the searched city / locayion.
 - Additional weather details, including air quality, humidity, visibility, feels-like temperature, and pressure, are all shown.
 - The application is fully responsive and adapts to different screen sizes!
+
+## Responsiveness: 
+
+### iPad:
+![943x943](./images/cometWeatherTablet.png)
+
+### iPhone / Mobile Devices:
+![387x943](./images/cometWeatherMobile.png)
