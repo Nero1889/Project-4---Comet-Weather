@@ -1,4 +1,5 @@
 # Comet Weather:
+![1917x1080](./images/cometWeatherDesktop.png)
 
 (designed first in Figma and developed using HTML, CSS and JavaScript) Comet Weather is a highly advanced API-based weather app. With over 700 lines of JavaScript! The project is able to fetch weather data from ANY city on Earth from the search bar based on your query, including sugguestions.
 
