@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet Weather! (v2)</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/stylesheets/header.css">
+    <link rel="stylesheet" href="src/stylesheets/upper-box.css">
+    <link rel="stylesheet" href="src/stylesheets/forecast-box.css">
+    <link rel="stylesheet" href="src/stylesheets/forecast-highlights.css">
+    <link rel="stylesheet" href="src/stylesheets/hourly-weather.css">
+    <link rel="stylesheet" href="src/stylesheets/footer.css">
+    <link rel="stylesheet" href="src/stylesheets/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 id="header-title">COMET WEATHER!</h1>
+        <!-- Desktop Search Bar -->
+        <div id="search-container">
+            <img id="desktop-search-icon" src="icons/search.png" alt="Search Icon"
+            draggable="false">
+            <input class="search-bar desktop-search-bar" type="text" placeholder="Search!">
+            <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
+        </div>
+        <div id="header-container">
+            <img class="header-icons" id="search-btn" src="icons/search.png"
+            alt="Search Icon" draggable="false">
+            <img class="header-icons" id="settings-btn" src="icons/settings.png"
+            alt="Settings Icon" draggable="false">
+            <div class="settings-overlay">
+                <div id="upper-settings-container">
+                    <h1 class="box-title" id="settings-title">Settings</h1>
+                </div>
+                <div id="settings-container">
+                    <div>
+                        <h2 class="sub-box-title" id="theme-title">Theme:</h2>
+                    </div>
+                    <button class="dark-toggle-btn">Dark</button>
+                    <button class="light-toggle-btn">Light</button>
+                    <button class="flat-toggle-btn">Flat</button>
+                </div>
+                <div>
+                    <div id="temperature-container"> <!-- Here -->
+                        <h2 class="sub-box-title" id="theme-title">Temperature Unit:</h2>
+                        <div id="a">
+                            Fahrenheit
+                            <img id="toggle-btn" src="icons/toggleOn.png"
+                            alt="Toggle Icon" draggable="false">
+                            Celcius
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-overlay">
+            <!-- Mobile Search Bar -->
+            <div id="user-input">
+                <img id="back-btn" src="icons/back.png" alt="Back Icon" draggable="false">
+                <input class="search-bar expanded" type="text">
+                <div id="suggestions-container"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div id="main-container">
+            <div class="box" id="upper-box">
+                <div id="current-temp">
+                    <div id="current-temp-container">
+                        <h3 class="card-title">Now</h3>
+                        <h1 class="temperature">...</h1>
+                        <p id="desc">...</p>
+                    </div>
+                    <img id="current-weather-img" src="" alt="Current Weather Icon"
+                    draggable="false">
+                </div>
+                <div id="vertical-bar"></div>
+                <div id="today-container">
+                    <div class="icon-container">
+                        <img class="today-icons" src="icons/calendar.png"
+                        alt="Calendar Icon" draggable="false">
+                        <p id="date">...</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="today-icons" src="icons/location.png"
+                        alt="Location Icon" draggable="false">
+                        <p id="city">...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box" id="forecast">
+                <div id="forecast-title-container">
+                    <h1 id="forecast-title">5 Day Forecast</h1>
+                    <h1 id="current-month">...</h1>
+                </div>
+                <div id="forecast-preview">
+                    <div class="day-forecast" id="day-col-1">
+                        <p class="forecast-day">...</p>
+                        <img class="forecast-icon" src="icons/01d.png"
+                        alt="Forecast Icon" draggable="false">
+                        <p class="forecast-temp">...</p>
+                    </div>
+                    <div class="day-forecast" id="day-col-2">
+                        <p class="forecast-day">...</p>
+                        <img class="forecast-icon" src="icons/01d.png"
+                        alt="Forecast Icon" draggable="false">
+                        <p class="forecast-temp">...</p>
+                    </div>
+                    <div class="day-forecast" id="day-col-3">
+                        <p class="forecast-day">...</p>
+                        <img class="forecast-icon" src="icons/01d.png"
+                        alt="Forecast Icon" draggable="false">
+                        <p class="forecast-temp">...</p>
+                    </div>
+                    <div class="day-forecast" id="day-col-4">
+                        <p class="forecast-day">...</p>
+                        <img class="forecast-icon" src="icons/01d.png"
+                        alt="Forecast Icon" draggable="false">
+                        <p class="forecast-temp">...</p>
+                    </div>
+                    <div class="day-forecast" id="day-col-5">
+                        <p class="forecast-day">...</p>
+                        <img class="forecast-icon" src="icons/01d.png"
+                        alt="Forecast Icon" draggable="false">
+                        <p class="forecast-temp">...</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="desktop-footer footer">
+                <div id="footer-container">
+                    <h1 id="footer-title">Raul Luna - 2025</h1>
+                    <div id="footer-icon-container">
+                        <a href="https://github.com/Nero1889" target="_blank">
+                            <img class="footer-icons" src="icons/gitHub.png"
+                            alt="GitHub Logo" draggable="false">
+                        </a>
+                        <a href="https://openweathermap.org/" target="_blank">
+                            <img class="footer-icons" src="icons/openWeatherMap.png"
+                            alt="OpenWeatherMap Logo" draggable="false">
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div id="aside-container">
+            <div class="box" id="highlights">
+                <div id="highlights-container">
+                    <h1 class="box-title">Highlights</h1>
+                </div>
+                <div class="sub-box">
+                    <h2 class="sub-box-title">Air Quality Index</h2>
+                    <div id="air-quality-container">
+                        <img class="highlight-icons" src="icons/air.png" alt="Air Icon"
+                        draggable="false">
+                        <p id="air-quality">...</p>
+                    </div>
+                    <div id="aqi-container" style="position: relative;">
+                        <div id="air-quality-bar"></div>
+                        <div id="aqi-indicator"></div>
+                    </div>
+                </div>
+                <div id="row-pair">
+                    <div class="sub-box">
+                        <h2 class="sub-box-title">Sunrise and Sunset</h2>
+                        <div id="rise-set-container">
+                            <div class="sub-rise-set-container">
+                                <img class="highlight-icons" src="icons/sun.png"
+                                alt="Sun Icon" draggable="false">
+                                <div>
+                                    <p>Sunrise</p>
+                                    <p class="time">...</p>
+                                </div>
+                            </div>
+                            <div class="sub-rise-set-container">
+                                <img class="highlight-icons" src="icons/moon.png"
+                                alt="Moon Icon" draggable="false">
+                                <div> 
+                                    <p>Sunset</p>
+                                    <p class="time">...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <h2 class="sub-box-title">Humidity</h2>
+                        <div id="humidity-container">
+                            <img class="highlight-icons" src="icons/humidity.png"
+                            alt="Humidity Icon" draggable="false">
+                            <p id="humidity">...</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="row-trio">
+                    <div class="sub-box">
+                        <h2 class="sub-box-title">Pressure</h2>
+                        <div id="pressure-container">
+                            <img class="highlight-icons" src="icons/pressure.png"
+                            alt="Pressure Icon" draggable="false">
+                            <p id="pressure">...</p>
+                        </div>
+                    </div>
+                    <div id="highlight-pair">
+                        <div class="sub-box pair">
+                            <h2 class="sub-box-title">Visibility</h2>
+                            <div id="visibility-container">
+                                <img class="highlight-icons" src="icons/visibility.png"
+                                alt="Visibility Icon" draggable="false">
+                                <p id="visibility">...</p>
+                            </div>
+                        </div>
+                        <div class="sub-box pair">
+                            <h2 class="sub-box-title">Feels Like</h2>
+                            <div id="feels-like-container">
+                                <img class="highlight-icons" src="icons/temperature.png"
+                                alt="Feels Like Icon" draggable="false">
+                                <p id="feels-like">...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="todays-weather-container">
+                <div id="todays-title-container">
+                    <h1 id="today-title">Today At:</h1>
+                </div>
+                <div id="todays-weather">
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01n.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01n.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01d.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01d.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01d.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01d.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01n.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                    <div class="hourly-weather">
+                        <h3 class="hourly-time">...</h3>
+                        <img class="hourly-icon" src="icons/01n.png"
+                        alt="Hourly Weather Icon" draggable="false">
+                        <p class="hourly-temp">...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mobile-footer footer">
+        <div id="footer-container">
+            <h1 id="footer-title">Raul Luna - 2025</h1>
+            <div id="footer-icon-container">
+                <a href="https://github.com/Nero1889" target="_blank">
+                    <img class="footer-icons" src="icons/gitHub.png" alt="GitHub Logo"
+                    draggable="false">
+                </a>
+                <a href="https://openweathermap.org/" target="_blank">
+                    <img class="footer-icons" src="icons/openWeatherMap.png"
+                    alt="OpenWeatherMap Logo" draggable="false">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="/src/main.js"></script>
+    <script src="/src/settings.js"></script>
+    <script src="/src/search-bar.js"></script>
+    <script src="/src/forecast.js"></script>
+    <script src="/src/highlights.js"></script>
+    <script src="/src/hourly-weather.js"></script>
+</body>
+</html>
