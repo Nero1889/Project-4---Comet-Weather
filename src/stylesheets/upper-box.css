@@ -1,0 +1,88 @@
+.main {
+    margin: 0 2rem 0 2rem;
+    color: var(--txt);
+}
+.box {
+    margin-top: 2.5rem;
+    background-color: var(--box);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 1.5rem;
+    position: relative;
+}
+.box, .hourly-weather, #footer-container {
+    backdrop-filter: blur(1.09px);
+}
+.box:hover::before {
+    opacity: 1;
+}
+.box::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.050), transparent 40%
+    );
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+    z-index: -1;
+}
+#upper-box {
+    display: flex;
+    flex-direction: column;
+}
+#current-temp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+#current-temp-container {
+    color: var(--white);
+}
+.card-title, .temperature, #desc {
+    font-weight: normal;
+}
+.card-title {
+    font-size: var(--size-lg);
+}
+.temperature {
+    font-size: var(--size-5xl);
+}
+#desc {
+    font-size: var(--size-sm);
+    margin-top: .5rem;
+}
+#vertical-bar {
+    margin-top: .5rem;
+    background-color: var(--vertical-line);
+    width: 100%;
+    height: 0.1rem;
+}
+#today-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.today-icons {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+#date, #city {
+    color: var(--txt);
+    font-size: var(--size-base);
+}

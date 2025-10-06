@@ -1,0 +1,95 @@
+#highlights {
+    display: flex;
+    flex-direction: column;
+}
+#highlights-container {  
+    width: 100%;
+}
+.sub-box {
+    background-color: var(--sub-box);
+    width: 100%;
+    padding: 10px;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+}
+#row-pair, #row-trio {
+    margin-left: -1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.sub-box-title {
+    font-weight: normal;
+    color: var(--txt);
+    font-size: var(--size-base);
+}
+#air-quality-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+.highlight-icons {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+#air-icon {
+    float: left;
+}
+#air-quality {
+    font-weight: normal;
+    color: var(--white);
+    font-size: var(--size-base);
+}
+#air-quality-bar {
+    background: linear-gradient(to right,
+    green, lime, yellow, orange,
+    orangered, #b71234, #800029,
+    rgb(128, 0, 79));
+    height: 5px;
+    border-radius: 50px;
+    margin: .75rem .25rem .25rem .25rem;
+}
+#aqi-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3.5px solid #0f0f0f;
+    position: absolute;
+    top: 0.125rem;
+    transform: translate(-50%, -50%);
+    left: 0%;
+}
+#rise-set-container {
+    margin-top: .5rem;
+    display: flex;
+    gap: 1rem;
+}
+.sub-rise-set-container {
+    color: var(--white);
+    font-size: var(--size-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+#humidity-container, #pressure-container,
+#visibility-container, #feels-like-container {
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--white);
+    font-size: var(--size-base);
+    margin-bottom: .25rem;
+}
+#highlight-pair {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    margin-left: .5rem;
+}
+.pair {
+    margin: 1rem -0.5rem -0.5rem -0.5rem;
+}

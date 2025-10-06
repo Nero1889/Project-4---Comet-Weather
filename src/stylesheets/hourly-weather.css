@@ -1,0 +1,48 @@
+#todays-title-container {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+#todays-weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#todays-weather {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 1.25rem;
+}
+#todays-weather::-webkit-scrollbar {
+    display: none;
+}
+.hourly-weather {
+    display: flex;
+    flex-direction: column;
+    width: 4.5rem;
+    height: 6.5rem;
+    background-color: var(--box);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 1rem;
+    flex-shrink: 0;
+}
+.hourly-time {
+    font-weight: normal;
+    color: var(--white);
+    font-size: var(--size-base);
+}
+.hourly-icon {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    width: 3rem;
+    height: 3rem;
+}
+.hourly-temp {
+    color: var(--white);
+    font-size: var(--size-base);   
+}
