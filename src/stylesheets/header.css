@@ -34,6 +34,7 @@
 #settings-btn {
     background-color: #b71234;
     transition: background-color .25s;
+    position: fixed;
 }
 #settings-btn:hover {
     background-color: #710033;
@@ -85,6 +86,7 @@
 #settings-container button {
     margin: 1.95rem 2rem 0 2rem;
     font-family: "General Sans", "sans-serif";
+    font-size: var(--size-base);
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.100);
     padding: 10px;
@@ -110,7 +112,7 @@
     flex-direction: column;
     gap: 1rem;
 }
-#a {
+#toggle-container {
     color: var(--white);
     display: flex;
     align-items: center;
@@ -139,7 +141,7 @@
     background-color: var(--gray);
     color: var(--white);
     padding-left: 5rem; 
-    border-bottom: 1px solid var(--vertical-line);
+    border-bottom: 1px solid #3e3e3e;
     outline: none;
 }
 #suggestions-container {
