@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comet Weather! (v2)</title>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <title>Comet Weather!</title>
+    <link rel="icon" type="image/svg+xml" href="icons/10d.png"/>
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/stylesheets/header.css">
     <link rel="stylesheet" href="src/stylesheets/upper-box.css">
@@ -42,9 +42,9 @@
                     <button class="flat-toggle-btn">Flat</button>
                 </div>
                 <div>
-                    <div id="temperature-container"> <!-- Here -->
+                    <div id="temperature-container">
                         <h2 class="sub-box-title" id="theme-title">Temperature Unit:</h2>
-                        <div id="a">
+                        <div id="toggle-container">
                             Fahrenheit
                             <img id="toggle-btn" src="icons/toggleOn.png"
                             alt="Toggle Icon" draggable="false">
@@ -292,11 +292,11 @@
             </div>
         </div>
     </footer>
-    <script src="./src/main.js"></script>
-    <script src="./src/settings.js"></script>
-    <script src="./src/search-bar.js"></script>
-    <script src="./src/forecast.js"></script>
-    <script src="./src/highlights.js"></script>
-    <script src="./src/hourly-weather.js"></script>
+    <script src="/src/main.js"></script>
+    <script src="/src/settings.js"></script>
+    <script src="/src/search-bar.js"></script>
+    <script src="/src/forecast.js"></script>
+    <script src="/src/highlights.js"></script>
+    <script src="/src/hourly-weather.js"></script>
 </body>
 </html>
