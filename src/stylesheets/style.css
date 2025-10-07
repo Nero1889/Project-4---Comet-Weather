@@ -39,14 +39,15 @@
     --box: rgba(255, 255, 255, 0.05);
     --sub-box: rgba(255, 255, 255, 0.05);  
     --txt: #b0b0b0;
+    --vertical-line: rgb(150, 150, 150);
 
     #upper-settings-container, .box,
     .sub-box, .hourly-weather {
         backdrop-filter: blur(1.5px);
     }
 }
-#upper-settings-container, .box,
-.sub-box, .hourly-weather {
+#upper-settings-container, .box, .sub-box,
+.hourly-weather, #footer-container {
     border: 1px solid rgba(255, 255, 255, 0.100);
 }
 html {
@@ -149,6 +150,10 @@ img, picture, video, canvas, svg {
     }
     #search-btn {
         display: none;
+    }
+    #settings-btn {
+        margin-top: -1.3rem;
+        margin-left: -3.1rem;
     }
     .search-overlay.open {
         display: none; 
