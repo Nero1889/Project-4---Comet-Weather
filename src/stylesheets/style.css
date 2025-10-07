@@ -151,10 +151,6 @@ img, picture, video, canvas, svg {
     #search-btn {
         display: none;
     }
-    #settings-btn {
-        margin-top: -1.3rem;
-        margin-left: -3.1rem;
-    }
     .search-overlay.open {
         display: none; 
     }
