@@ -34,7 +34,6 @@
 #settings-btn {
     background-color: #b71234;
     transition: background-color .25s;
-    position: fixed;
 }
 #settings-btn:hover {
     background-color: #710033;
