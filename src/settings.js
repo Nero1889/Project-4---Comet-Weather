@@ -1,24 +1,15 @@
+/* Settings Open and Close */
 const SETTINGS_BTN = document.querySelector("#settings-btn");
-const SETTINGS_ICON = "icons/settings.png";
-const CLOSE_ICON = "icons/close.png";
 const SETTINGS_OVERLAY = document.querySelector(".settings-overlay");
+const CLOSE_BTN = document.querySelector("#close-btn");
 
-SETTINGS_BTN.addEventListener("click", () => {
-    SETTINGS_OVERLAY.classList.toggle("opened");
-
-    if (SETTINGS_OVERLAY.classList.contains("opened")) {
-        SETTINGS_BTN.src = CLOSE_ICON;
-        SETTINGS_BTN.alt = "Close Icon";
-    } else {
-        SETTINGS_BTN.src = SETTINGS_ICON;
-        SETTINGS_BTN.alt = "Settings Icon";
-    }
-});
+SETTINGS_BTN.addEventListener("click", () =>  SETTINGS_OVERLAY.classList.add("opened"));
+CLOSE_BTN.addEventListener("click", () =>  SETTINGS_OVERLAY.classList.remove("opened"));
 
 
 
 
-
+/* Toggle Theme */
 const DARK_TOGGLE_BTN = document.querySelector(".dark-toggle-btn");
 const LIGHT_TOGGLE_BTN = document.querySelector(".light-toggle-btn");
 const FLAT_TOGGLE_BTN = document.querySelector(".flat-toggle-btn");
@@ -41,7 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (savedTheme) setTheme(savedTheme);
     else setTheme("dark");
 });
-
 
 
 
