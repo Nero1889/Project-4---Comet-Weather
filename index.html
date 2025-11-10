@@ -21,18 +21,25 @@
         <div id="search-container">
             <img id="desktop-search-icon" src="icons/search.png" alt="Search Icon"
             draggable="false">
+
             <input class="search-bar desktop-search-bar" type="text" placeholder="Search!">
             <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
         </div>
+
         <div id="header-container">
             <img class="header-icons" id="search-btn" src="icons/search.png"
             alt="Search Icon" draggable="false">
+
             <img class="header-icons" id="settings-btn" src="icons/settings.png"
             alt="Settings Icon" draggable="false">
+
             <div class="settings-overlay">
                 <div id="upper-settings-container">
                     <h1 class="box-title" id="settings-title">Settings</h1>
+                    <img class="header-icons" id="close-btn" src="icons/close.png"
+                    alt="Close Icon" draggable="false">
                 </div>
+
                 <div id="settings-container">
                     <div>
                         <h2 class="sub-box-title" id="theme-title">Theme:</h2>
@@ -41,12 +48,13 @@
                     <button class="light-toggle-btn">Light</button>
                     <button class="flat-toggle-btn">Flat</button>
                 </div>
+
                 <div>
                     <div id="temperature-container">
                         <h2 class="sub-box-title" id="theme-title">Temperature Unit:</h2>
                         <div id="toggle-container">
                             Fahrenheit
-                            <img id="toggle-btn" src="icons/toggleOn.png"
+                            <img id="toggle-btn" src="icons/toggleOff.png"
                             alt="Toggle Icon" draggable="false">
                             Celcius
                         </div>
@@ -54,6 +62,7 @@
                 </div>
             </div>
         </div>
+
         <div class="search-overlay">
             <!-- Mobile Search Bar -->
             <div id="user-input">
@@ -72,16 +81,20 @@
                         <h1 class="temperature">...</h1>
                         <p id="desc">...</p>
                     </div>
+                    
                     <img id="current-weather-img" src="" alt="Current Weather Icon"
                     draggable="false">
                 </div>
+
                 <div id="vertical-bar"></div>
                 <div id="today-container">
+
                     <div class="icon-container">
                         <img class="today-icons" src="icons/calendar.png"
                         alt="Calendar Icon" draggable="false">
                         <p id="date">...</p>
                     </div>
+
                     <div class="icon-container">
                         <img class="today-icons" src="icons/location.png"
                         alt="Location Icon" draggable="false">
@@ -94,6 +107,7 @@
                     <h1 id="forecast-title">5 Day Forecast</h1>
                     <h1 id="current-month">...</h1>
                 </div>
+
                 <div id="forecast-preview">
                     <div class="day-forecast" id="day-col-1">
                         <p class="forecast-day">...</p>
@@ -101,24 +115,28 @@
                         alt="Forecast Icon" draggable="false">
                         <p class="forecast-temp">...</p>
                     </div>
+
                     <div class="day-forecast" id="day-col-2">
                         <p class="forecast-day">...</p>
                         <img class="forecast-icon" src="icons/01d.png"
                         alt="Forecast Icon" draggable="false">
                         <p class="forecast-temp">...</p>
                     </div>
+
                     <div class="day-forecast" id="day-col-3">
                         <p class="forecast-day">...</p>
                         <img class="forecast-icon" src="icons/01d.png"
                         alt="Forecast Icon" draggable="false">
                         <p class="forecast-temp">...</p>
                     </div>
+
                     <div class="day-forecast" id="day-col-4">
                         <p class="forecast-day">...</p>
                         <img class="forecast-icon" src="icons/01d.png"
                         alt="Forecast Icon" draggable="false">
                         <p class="forecast-temp">...</p>
                     </div>
+
                     <div class="day-forecast" id="day-col-5">
                         <p class="forecast-day">...</p>
                         <img class="forecast-icon" src="icons/01d.png"
@@ -129,12 +147,13 @@
             </div>
             <footer class="desktop-footer footer">
                 <div id="footer-container">
-                    <h1 id="footer-title">Alexis Luna - 2025</h1>
+                    <h1 id="footer-title">Alexis Luna</h1>
                     <div id="footer-icon-container">
                         <a href="https://github.com/Nero1889" target="_blank">
                             <img class="footer-icons" src="icons/gitHub.png"
                             alt="GitHub Logo" draggable="false">
                         </a>
+
                         <a href="https://openweathermap.org/" target="_blank">
                             <img class="footer-icons" src="icons/openWeatherMap.png"
                             alt="OpenWeatherMap Logo" draggable="false">
@@ -143,11 +162,13 @@
                 </div>
             </footer>
         </div>
+
         <div id="aside-container">
             <div class="box" id="highlights">
                 <div id="highlights-container">
                     <h1 class="box-title">Highlights</h1>
                 </div>
+
                 <div class="sub-box">
                     <h2 class="sub-box-title">Air Quality Index</h2>
                     <div id="air-quality-container">
@@ -155,6 +176,7 @@
                         draggable="false">
                         <p id="air-quality">...</p>
                     </div>
+
                     <div id="aqi-container" style="position: relative;">
                         <div id="air-quality-bar"></div>
                         <div id="aqi-indicator"></div>
@@ -172,6 +194,7 @@
                                     <p class="time">...</p>
                                 </div>
                             </div>
+
                             <div class="sub-rise-set-container">
                                 <img class="highlight-icons" src="icons/moon.png"
                                 alt="Moon Icon" draggable="false">
@@ -182,6 +205,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="sub-box">
                         <h2 class="sub-box-title">Humidity</h2>
                         <div id="humidity-container">
@@ -209,6 +233,7 @@
                                 <p id="visibility">...</p>
                             </div>
                         </div>
+
                         <div class="sub-box pair">
                             <h2 class="sub-box-title">Feels Like</h2>
                             <div id="feels-like-container">
@@ -231,42 +256,49 @@
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01n.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01d.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01d.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01d.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01d.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01n.png"
                         alt="Hourly Weather Icon" draggable="false">
                         <p class="hourly-temp">...</p>
                     </div>
+
                     <div class="hourly-weather">
                         <h3 class="hourly-time">...</h3>
                         <img class="hourly-icon" src="icons/01n.png"
@@ -279,7 +311,7 @@
     </main>
     <footer class="mobile-footer footer">
         <div id="footer-container">
-            <h1 id="footer-title">Alexis Luna - 2025</h1>
+            <h1 id="footer-title">Alexis Luna</h1>
             <div id="footer-icon-container">
                 <a href="https://github.com/Nero1889" target="_blank">
                     <img class="footer-icons" src="icons/gitHub.png" alt="GitHub Logo"
@@ -292,11 +324,11 @@
             </div>
         </div>
     </footer>
-    <script src="./src/main.js"></script>
-    <script src="./src/settings.js"></script>
-    <script src="./src/search-bar.js"></script>
-    <script src="./src/forecast.js"></script>
-    <script src="./src/highlights.js"></script>
-    <script src="./src/hourly-weather.js"></script>
+    <script src="/src/main.js"></script>
+    <script src="/src/settings.js"></script>
+    <script src="/src/search-bar.js"></script>
+    <script src="/src/forecast.js"></script>
+    <script src="/src/highlights.js"></script>
+    <script src="/src/hourly-weather.js"></script>
 </body>
 </html>
