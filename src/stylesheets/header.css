@@ -38,9 +38,6 @@
 #settings-btn:hover {
     background-color: #710033;
 }
-#settings-btn {
-    z-index: 9999;
-}
 .settings-overlay, .search-overlay  {
     display: none; 
 }
@@ -56,7 +53,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 99; 
+    z-index: 99;
 }
 #upper-settings-container {
     background-color: var(--gray);
